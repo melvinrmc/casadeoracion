@@ -1,0 +1,22 @@
+<h2>Miembros de la Iglesia</h2>
+
+<div>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Dpi</th>
+    </tr>
+    <tr *ngFor="let member of members">
+      <td>
+        <span>{{ member.firstName }} </span>
+      </td>
+      <td>
+        <span>{{ member.lastName }} </span>
+      </td>
+      <td>
+        <span>{{ member.dpi }} </span>
+      </td>
+    </tr>
+  </table>
+</div>

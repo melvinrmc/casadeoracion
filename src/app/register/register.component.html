@@ -1,0 +1,110 @@
+<h1>Ingrese sus datos</h1>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="id"> id </label>
+    <input id="id" type="text" formControlName="id" />
+  </div>
+
+  <div>
+    <label for="dpi"> dpi </label>
+    <input id="dpi" type="text" formControlName="dpi" />
+  </div>
+
+  <div>
+    <label for="firstName"> Primer Nombre </label>
+    <input id="firstName" type="text" formControlName="firstName" />
+  </div>
+
+  <div>
+    <label for="secondName"> Segundo Nombre </label>
+    <input id="secondName" type="text" formControlName="secondName" />
+  </div>
+
+  <div>
+    <label for="lastName"> Primer Apellido </label>
+    <input id="lastName" type="text" formControlName="lastName" />
+  </div>
+
+  <div>
+    <label for="secondLastName"> Segundo Apellido </label>
+    <input id="secondLastName" type="text" formControlName="secondLastName" />
+  </div>
+
+  <div>
+    <label for="marriedName"> Apellido de Casada </label>
+    <input id="marriedName" type="text" formControlName="marriedName" />
+  </div>
+
+  <div>
+    <label for="genere"> Genero </label>
+    <input id="genere" type="text" formControlName="genere" />
+  </div>
+
+  <div>
+    <label for="maritalStatus"> Estado Civil </label>
+    <input id="maritalStatus" type="text" formControlName="maritalStatus" />
+  </div>
+
+  <div>
+    <label for="birthday"> Fecha de Nacimiento (dd/MM/YYYY) </label>
+    <input id="birthday" type="text" formControlName="birthday" />
+  </div>
+
+  <div>
+    <label for="age"> Edad </label>
+    <input id="age" type="text" formControlName="age" />
+  </div>
+
+  <div>
+    <label for="mobileNumber"> Numero de Celular </label>
+    <input id="mobileNumber" type="text" formControlName="mobileNumber" />
+  </div>
+
+  <div>
+    <label for="mobileCompany"> Empresa Telefonia </label>
+    <input id="mobileCompany" type="text" formControlName="mobileCompany" />
+  </div>
+
+  <div>
+    <label for="email"> Email </label>
+    <input id="email" type="text" formControlName="email" />
+  </div>
+
+  <div>
+    <label for="streetAvenue"> Direccion Calle o Avenida </label>
+    <input id="streetAvenue" type="text" formControlName="streetAvenue" />
+  </div>
+
+  <div>
+    <label for="number"> Numero de Casa </label>
+    <input id="number" type="text" formControlName="number" />
+  </div>
+
+  <div>
+    <label for="zone"> Zona </label>
+    <input id="zone" type="text" formControlName="zone" />
+  </div>
+
+  <div>
+    <label for="city"> Ciudad </label>
+    <input id="city" type="text" formControlName="city" />
+  </div>
+
+  <div>
+    <label for="state"> Departamento </label>
+    <input id="state" type="text" formControlName="state" />
+  </div>
+
+  <div>
+    <label for="neighbourhood"> Colonia/Caserio/Aldea </label>
+    <input id="neighbourhood" type="text" formControlName="neighbourhood" />
+  </div>
+
+  <div>
+    <label for="additionalInfo"> Informacion Adicional </label>
+    <input id="additionalInfo" type="text" formControlName="additionalInfo" />
+  </div>
+
+  <button type="submit" class="button">Registrarse</button>
+</form>
