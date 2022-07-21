@@ -14,12 +14,20 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'products/:productId', component: ProductDetailsComponent },
@@ -29,6 +37,7 @@ import { HomeComponent } from './home/home.component';
       { path: 'register', component: RegisterComponent },
       { path: 'products', component: ProductListComponent },
     ]),
+    NoopAnimationsModule,
   ],
   declarations: [
     AppComponent,
