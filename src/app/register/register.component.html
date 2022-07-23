@@ -1,110 +1,258 @@
-<h1>Ingrese sus datos</h1>
+<h1>Llene los datos del siguiente formulario</h1>
 
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="id"> id </label>
-    <input id="id" type="text" formControlName="id" />
-  </div>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Company (disabled)</mat-label>
+    <input matInput disabled value="Google" />
+  </mat-form-field>
 
-  <div>
-    <label for="dpi"> dpi </label>
-    <input id="dpi" type="text" formControlName="dpi" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Membresia No.</mat-label>
+      <input type="number" id="id" formControlName="id" matInput value="" />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint>Ex. 1001</mat-hint>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="firstName"> Primer Nombre </label>
-    <input id="firstName" type="text" formControlName="firstName" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>No. DPI</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Ingrese numero de DPI"
+        formControlName="dpi"
+      />
+      <mat-icon matSuffix>perm_identity</mat-icon>
+      <mat-hint>Ex. 1803122330409</mat-hint>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="secondName"> Segundo Nombre </label>
-    <input id="secondName" type="text" formControlName="secondName" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Primer Nombre</mat-label>
+      <input
+        id="firstName"
+        formControlName="firstName"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="lastName"> Primer Apellido </label>
-    <input id="lastName" type="text" formControlName="lastName" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Segundo Nombre</mat-label>
+      <input
+        id="secondName"
+        formControlName="secondName"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="secondLastName"> Segundo Apellido </label>
-    <input id="secondLastName" type="text" formControlName="secondLastName" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Primer Apellido</mat-label>
+      <input id="lastName" formControlName="lastName" matInput placeholder="" />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="marriedName"> Apellido de Casada </label>
-    <input id="marriedName" type="text" formControlName="marriedName" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Segundo Apellido</mat-label>
+      <input
+        id="secondLastName"
+        formControlName="secondLastName"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="genere"> Genero </label>
-    <input id="genere" type="text" formControlName="genere" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Apellido de Casada</mat-label>
+      <input
+        id="marriedName"
+        formControlName="marriedName"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="maritalStatus"> Estado Civil </label>
-    <input id="maritalStatus" type="text" formControlName="maritalStatus" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Genero</mat-label>
+      <mat-select id="genere" formControlName="genere">
+        <mat-option value="MASCULINO">MASCULINO</mat-option>
+        <mat-option value="FEMENINO">FEMENINO</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="birthday"> Fecha de Nacimiento (dd/MM/YYYY) </label>
-    <input id="birthday" type="text" formControlName="birthday" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Estado Civil</mat-label>
+      <mat-select id="maritalStatus" formControlName="maritalStatus">
+        <mat-option value="SOLTERO">SOLTERO</mat-option>
+        <mat-option value="CASADO">CASADO</mat-option>
+        <mat-option value="VIUDO">VIUDO</mat-option>
+        <mat-option value="DIVORCIADO">DIVORCIADO</mat-option>
+        <mat-option value="SEPARADO">SEPARADO</mat-option>
+        <mat-option value="UNIDO">UNIDO</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="age"> Edad </label>
-    <input id="age" type="text" formControlName="age" />
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de Nacimiento</mat-label>
+    <input type="date" matInput id="birthday" formControlName="birthday" />
+    <mat-hint>DD/MM/YYYY</mat-hint>
+  </mat-form-field>
 
-  <div>
-    <label for="mobileNumber"> Numero de Celular </label>
-    <input id="mobileNumber" type="text" formControlName="mobileNumber" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Edad</mat-label>
+      <input
+        type="number"
+        id="age"
+        formControlName="age"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="mobileCompany"> Empresa Telefonia </label>
-    <input id="mobileCompany" type="text" formControlName="mobileCompany" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Numero de Celular </mat-label>
+      <input
+        type="number"
+        id="mobileNsumber"
+        formControlName="mobileNumber"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="email"> Email </label>
-    <input id="email" type="text" formControlName="email" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Empresa Telefonia</mat-label>
+      <mat-select id="mobileCompany" formControlName="mobileCompany">
+        <mat-option value="CLARO">CLARO</mat-option>
+        <mat-option value="TIGO">TIGO</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="streetAvenue"> Direccion Calle o Avenida </label>
-    <input id="streetAvenue" type="text" formControlName="streetAvenue" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        id="email"
+      />
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="number"> Numero de Casa </label>
-    <input id="number" type="text" formControlName="number" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Direccion Calle o Avenida </mat-label>
+      <input
+        id="streetAvenue"
+        formControlName="streetAvenue"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint>Ex. 1a. Calle o 2da Avenida</mat-hint>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="zone"> Zona </label>
-    <input id="zone" type="text" formControlName="zone" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Numero de Casa </mat-label>
+      <input id="number" formControlName="number" matInput placeholder="" />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint>Ex. 1-73</mat-hint>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="city"> Ciudad </label>
-    <input id="city" type="text" formControlName="city" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Zona </mat-label>
+      <input
+        type="number"
+        id="zone"
+        formControlName="zone"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="state"> Departamento </label>
-    <input id="state" type="text" formControlName="state" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Municipio </mat-label>
+      <input id="city" formControlName="city" matInput placeholder="" />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="neighbourhood"> Colonia/Caserio/Aldea </label>
-    <input id="neighbourhood" type="text" formControlName="neighbourhood" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Departamento</mat-label>
+      <input matInput placeholder="" id="state" formControlName="state" />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </p>
 
-  <div>
-    <label for="additionalInfo"> Informacion Adicional </label>
-    <input id="additionalInfo" type="text" formControlName="additionalInfo" />
-  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Colonia/Caserio/Aldea</mat-label>
+      <input
+        matInput
+        placeholder=""
+        id="neighbourhood"
+        formControlName="neighbourhood"
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint>Ex. Las Cruces</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Informacion Adicional</mat-label>
+      <input
+        matInput
+        placeholder=""
+        id="additionalInfo"
+        formControlName="additionalInfo"
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint>Ex. Tocar fuerte</mat-hint>
+    </mat-form-field>
+  </p>
 
   <button type="submit" class="button">Registrarse</button>
 </form>

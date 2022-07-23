@@ -1,5 +1,5 @@
 export interface Member {
-  id: number;
+  id: string;
   dpi: string;
   firstName: string;
   secondName: string;
@@ -27,7 +27,7 @@ export interface Member {
 
 export const members = [
   {
-    id: 1,
+    id: '1001',
     dpi: '1101547310409',
     firstName: 'Mario E.',
     secondName: 'Enrique',
@@ -53,7 +53,7 @@ export const members = [
     },
   },
   {
-    id: 2,
+    id: '1002',
     dpi: '1201547310409',
     firstName: 'Berta',
     secondName: '',
@@ -79,7 +79,7 @@ export const members = [
     },
   },
   {
-    id: 2,
+    id: '1003',
     dpi: '1803511110409',
     firstName: 'Melvin',
     secondName: 'Ruben',

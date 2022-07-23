@@ -10,9 +10,10 @@ import { FormBuilder } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   members = this.memberService.getMembers();
+  startDate = new Date(1990, 0, 1);
 
   checkoutForm = this.formBuilder.group({
-    id: 1,
+    id: '1010',
     dpi: '',
     firstName: '',
     secondName: '',
@@ -49,7 +50,7 @@ export class RegisterComponent implements OnInit {
     let member: Member;
 
     member = {
-      id: Number(this.checkoutForm.value.id),
+      id: String(this.checkoutForm.value.id),
 
       dpi: String(this.checkoutForm.value.dpi),
       firstName: String(this.checkoutForm.value.firstName),

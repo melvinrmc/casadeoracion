@@ -13,8 +13,11 @@ body {
 }
 
 .container {
-  display: inline;
+  display: block;
   flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
 
 router-outlet + * {
@@ -60,6 +63,7 @@ input {
   padding: 8px;
   margin-bottom: 16px;
   border: 1px solid #bdbdbd;
+  text-transform: uppercase;
 }
 
 label {
@@ -67,7 +71,7 @@ label {
   font-weight: bold;
   margin-bottom: 4px;
   display: block;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* Button */
