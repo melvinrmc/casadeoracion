@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-casadeoracion-dev-21013-authRole",
+      "UnauthRoleArn": "arn:aws:iam::646101853261:role/amplify-casadeoracion-dev-21013-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::646101853261:role/amplify-casadeoracion-dev-21013-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
+      "UnauthRoleName": "amplify-casadeoracion-dev-21013-unauthRole",
+      "StackName": "amplify-casadeoracion-dev-21013",
+      "StackId": "arn:aws:cloudformation:us-east-1:646101853261:stack/amplify-casadeoracion-dev-21013/b636a010-0e4c-11ed-a915-0e4136615187",
+      "AmplifyAppId": "d3iegqf6chw9vy"
+    },
+    "categories": {
+      "auth": {
+        "casadeoracionfcc8753d": {}
+      }
+    }
+  }
+}
