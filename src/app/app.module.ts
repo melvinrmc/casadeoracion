@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -29,6 +31,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AmplifyAuthenticatorModule,
     ReactiveFormsModule,
     MatTableModule,
     MatFormFieldModule,
