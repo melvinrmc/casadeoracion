@@ -1,14 +1,17 @@
 <a [routerLink]="['/']">
   <h1>Mi Iglesia</h1>
 </a>
-<a [routerLink]="['/members']">
-  <h1>Membresias</h1>
-</a>
+<ng-container *ngIf="authenticator.route === 'authenticated'">
+  <a [routerLink]="['/members']">
+    <h1>Membresias</h1>
+  </a>
+</ng-container>
 
-<a [routerLink]="['/register']" class="button fancy-button"
-  >+<i class="material-icons">person</i>Hazte Miembro</a
->
-
+<ng-container *ngIf="authenticator.route === 'authenticated'">
+  <a [routerLink]="['/register']" class="button fancy-button"
+    >+<i class="material-icons">person</i>Hazte Miembro</a
+  >
+</ng-container>
 <!-- 
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that

@@ -9,10 +9,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-}
-
 .container {
   display: block;
   flex-direction: row;
@@ -160,4 +156,9 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-image: url('https://quesos.s3.amazonaws.com/img/propuesta-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }

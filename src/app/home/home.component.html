@@ -1,4 +1,12 @@
-<img
-  src="https://quesos.s3.amazonaws.com/img/propuesta-1.jpg"
-  alt="logo casa de oracion"
-/>
+<div class="home-class">
+  <amplify-authenticator [hideSignUp]="true">
+    <ng-template
+      amplifySlot="authenticated"
+      let-user="user"
+      let-signOut="signOut"
+    >
+      <h1>Welcome {{ user.username }}!</h1>
+      <button (click)="signOut()">Sign Out</button>
+    </ng-template>
+  </amplify-authenticator>
+</div>
