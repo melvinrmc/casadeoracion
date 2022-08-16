@@ -27,7 +27,7 @@ export class MemberService {
 
   getRemoteMembers() {
     const apiName = 'memberService';
-    const path = '/members/1001';
+    const path = '/members/1002';
     const myInit = {
       // OPTIONAL
       headers: {}, // OPTIONAL
@@ -38,13 +38,6 @@ export class MemberService {
       },
     };
 
-    API.get(apiName, path, myInit)
-      .then((response) => {
-        // Add your code here
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+    return API.get(apiName, path, myInit);
   }
 }
