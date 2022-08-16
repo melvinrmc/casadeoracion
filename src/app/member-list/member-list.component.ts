@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./member-list.component.css'],
 })
 export class MemberListComponent implements OnInit {
-  members = this.memberService.getMembers();
+  remoteMembers = this.memberService.getRemoteMembers();
 
   constructor(private memberService: MemberService) {}
 

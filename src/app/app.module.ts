@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { FormsModule } from '@angular/forms';
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 
@@ -36,6 +37,7 @@ Amplify.configure(awsconfig);
     BrowserModule,
     HttpClientModule,
     AmplifyAuthenticatorModule,
+    FormsModule,
     ReactiveFormsModule,
     MatTableModule,
     MatFormFieldModule,
