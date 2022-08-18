@@ -8,8 +8,6 @@ import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { FormsModule } from '@angular/forms';
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
-import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
