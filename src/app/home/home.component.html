@@ -5,7 +5,12 @@
       let-user="user"
       let-signOut="signOut"
     >
-      <h1>Welcome {{ user.username }}!</h1>
+      <h1>Bienvenido</h1>
+      <h2>
+        {{ user.signInUserSession.accessToken.payload['cognito:groups'] }}:
+        {{ user.attributes.email }}!
+      </h2>
+      <h3>id: {{ user.username }}</h3>
       <button (click)="signOut()">Sign Out</button>
     </ng-template>
   </amplify-authenticator>

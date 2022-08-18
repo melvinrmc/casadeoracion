@@ -11,14 +11,25 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./member-list.component.css'],
 })
 export class MemberListComponent implements OnInit {
-  members = this.memberService.getMembers();
+  dataSource = new MatTableDataSource<{
+    email: string;
+    id: string;
+    dpi: string;
+    firstName: string;
+    lastName: string;
+  }>();
 
   constructor(private memberService: MemberService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.memberService.getRemoteMembers().then((things) => {
+      this.dataSource.data = things.data;
+      //this.dataSource.paginator = this.paginator;
+      //this.dataSource.sort = this.sort;
+    });
+  }
 
   displayedColumns: string[] = ['firstName', 'lastName', 'dpi', 'email'];
-  dataSource = new MatTableDataSource(members);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
