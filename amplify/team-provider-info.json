@@ -9,11 +9,22 @@
       "UnauthRoleName": "amplify-casadeoracion-dev-21013-unauthRole",
       "StackName": "amplify-casadeoracion-dev-21013",
       "StackId": "arn:aws:cloudformation:us-east-1:646101853261:stack/amplify-casadeoracion-dev-21013/b636a010-0e4c-11ed-a915-0e4136615187",
-      "AmplifyAppId": "d3iegqf6chw9vy"
+      "AmplifyAppId": "d3iegqf6chw9vy",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-casadeoracion-dev-21013-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
         "casadeoracionfcc8753d": {}
+      },
+      "function": {
+        "memberTriggerad23dafb": {
+          "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
+          "s3Key": "amplify-builds/memberTriggerad23dafb-757a65786367346d5244-build.zip"
+        },
+        "memberService": {
+          "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
+          "s3Key": "amplify-builds/memberService-5a6d7645533032446774-build.zip"
+        }
       }
     }
   }

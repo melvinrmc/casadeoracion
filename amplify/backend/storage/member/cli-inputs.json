@@ -1,0 +1,10 @@
+{
+  "resourceName": "member",
+  "tableName": "co_member",
+  "partitionKey": {
+    "fieldName": "register.id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
