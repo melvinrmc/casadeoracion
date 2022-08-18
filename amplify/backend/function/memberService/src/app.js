@@ -23,7 +23,7 @@ if (process.env.ENV && process.env.ENV !== "NONE") {
 }
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
-const partitionKeyName = "register.id";
+const partitionKeyName = "id";
 const partitionKeyType = "S";
 const sortKeyName = "";
 const sortKeyType = "";

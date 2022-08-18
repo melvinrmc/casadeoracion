@@ -2,7 +2,7 @@
   "resourceName": "member",
   "tableName": "co_member",
   "partitionKey": {
-    "fieldName": "register.id",
+    "fieldName": "id",
     "fieldType": "string"
   },
   "gsi": [],
