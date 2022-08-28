@@ -13,28 +13,22 @@ export class RegisterComponent implements OnInit {
   startDate = new Date(1990, 0, 1);
 
   checkoutForm = this.formBuilder.group({
-    id: '1010',
-    dpi: '',
-    firstName: '',
-    secondName: '',
+    numRegistro: '',
+    isMember: '1',
     lastName: '',
-    secondLastName: '',
     marriedName: '',
-    genere: '',
-    maritalStatus: '',
+    firstName: '',
+    fullAddress: '',
     birthday: '',
+    genere: '',
     age: 0,
     mobileNumber: '',
-    mobileCompany: '',
-    email: '',
-
-    streetAvenue: 0,
-    streetName: '',
-    number: '',
-    zone: 0,
-    city: 'Patzicia',
-    state: 'Chimaltenango',
-    neighbourhood: '',
+    maritalStatus: '',
+    dpi: '',
+    isBaptized: '2',
+    fathersName: '',
+    mothersName: '',
+    dpiParent: '',
     additionalInfo: '',
   });
 
@@ -50,32 +44,23 @@ export class RegisterComponent implements OnInit {
     let member: Member;
 
     member = {
-      id: String(this.checkoutForm.value.id),
-
-      dpi: String(this.checkoutForm.value.dpi),
-      firstName: String(this.checkoutForm.value.firstName),
-      secondName: String(this.checkoutForm.value.secondName),
+      numRegistro: String(this.checkoutForm.value.numRegistro),
+      isMember: String(this.checkoutForm.value.isMember),
       lastName: String(this.checkoutForm.value.lastName),
-      secondLastName: String(this.checkoutForm.value.secondLastName),
       marriedName: String(this.checkoutForm.value.marriedName),
-      genere: String(this.checkoutForm.value.genere),
-      maritalStatus: String(this.checkoutForm.value.maritalStatus),
+      firstName: String(this.checkoutForm.value.firstName),
+      fullAddress: String(this.checkoutForm.value.fullAddress),
       birthday: String(this.checkoutForm.value.birthday),
+      genere: String(this.checkoutForm.value.genere),
       age: Number(this.checkoutForm.value.age),
       mobileNumber: String(this.checkoutForm.value.mobileNumber),
-      mobileCompany: String(this.checkoutForm.value.mobileCompany),
-      email: String(this.checkoutForm.value.email),
-
-      address: {
-        streetAvenue: Number(this.checkoutForm.value.streetAvenue),
-        streetName: String(this.checkoutForm.value.streetName),
-        number: String(this.checkoutForm.value.number),
-        zone: Number(this.checkoutForm.value.zone),
-        city: String(this.checkoutForm.value.city),
-        state: String(this.checkoutForm.value.state),
-        neighbourhood: String(this.checkoutForm.value.neighbourhood),
-        additionalInfo: String(this.checkoutForm.value.additionalInfo),
-      },
+      maritalStatus: String(this.checkoutForm.value.maritalStatus),
+      dpi: String(this.checkoutForm.value.dpi),
+      isBaptized: String(this.checkoutForm.value.isBaptized),
+      fathersName: String(this.checkoutForm.value.fathersName),
+      mothersName: String(this.checkoutForm.value.mothersName),
+      dpiParent: String(this.checkoutForm.value.dpiParent),
+      additionalInfo: String(this.checkoutForm.value.additionalInfo),
     };
 
     this.memberService.addToRegister(member);

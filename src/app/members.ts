@@ -1,108 +1,80 @@
 export interface Member {
-  id: string;
-  dpi: string;
-  firstName: string;
-  secondName: string;
+  numRegistro: string;
+  isMember: string;
   lastName: string;
-  secondLastName: string;
   marriedName: string;
-  genere: string;
-  maritalStatus: string;
+  firstName: string;
+  fullAddress: string;
   birthday: string;
+  genere: string;
   age: number;
   mobileNumber: string;
-  mobileCompany: string;
-  email: string;
-  address: {
-    streetAvenue: number;
-    streetName: string;
-    number: string;
-    zone: number;
-    city: string;
-    state: string;
-    neighbourhood: string;
-    additionalInfo: string;
-  };
+  maritalStatus: string;
+  dpi: string;
+  isBaptized: string;
+  fathersName: string;
+  mothersName: string;
+  dpiParent: string;
+  additionalInfo: string;
 }
 
 export const members = [
   {
-    id: '1001',
-    dpi: '1101547310409',
-    firstName: 'Mario E.',
-    secondName: 'Enrique',
+    numRegistro: '1001',
+    isMember: '1',
     lastName: 'Mendoza',
-    secondLastName: '',
     marriedName: '',
-    genere: 'M',
-    maritalStatus: 'Casado',
-    birthday: '01-Junio-1946',
-    age: 79,
-    mobileNumber: '55111271',
-    mobileCompany: 'Tigo',
-    email: 'memendoza@casadeoracion.org',
-    address: {
-      streetAvenue: 3,
-      streetName: 'Calle',
-      number: '11-173',
-      zone: 4,
-      city: 'Patzicia',
-      state: 'Chimaltenango',
-      neighbourhood: 'Buenos Aires',
-      additionalInfo: '',
-    },
+    firstName: 'Mario Enrique',
+    fullAddress: '2 Calle 1-47 Zona 2',
+    birthday: '17/07/1963',
+    genere: 'MASCULINO',
+    age: 63,
+    mobileNumber: '55123456',
+    maritalStatus: 'CASADO',
+    dpi: '1801511220101',
+    isBaptized: '1',
+    fathersName: '',
+    mothersName: '',
+    dpiParent: '',
+    additionalInfo: 'Pastor General',
   },
   {
-    id: '1002',
-    dpi: '1201547310409',
-    firstName: 'Berta',
-    secondName: '',
+    numRegistro: '1002',
+    isMember: '1',
     lastName: 'Estrada',
-    secondLastName: '',
     marriedName: 'de Mendoza',
-    genere: 'F',
-    maritalStatus: 'Casado',
-    birthday: '02-Junio-1946',
-    age: 79,
-    mobileNumber: '55111271',
-    mobileCompany: 'Tigo',
-    email: 'bdemendoza@casadeoracion.org',
-    address: {
-      streetAvenue: 3,
-      streetName: 'Calle',
-      number: '11-173',
-      zone: 4,
-      city: 'Patzicia',
-      state: 'Chimaltenango',
-      neighbourhood: 'Buenos Aires',
-      additionalInfo: '',
-    },
+    firstName: 'Bertha',
+    fullAddress: '2 Calle 1-47 Zona 2',
+    birthday: '11/05/1963',
+    genere: 'FEMENINO',
+    age: 63,
+    mobileNumber: '44123456',
+    maritalStatus: 'CASADO',
+    dpi: '1801411220101',
+    isBaptized: '1',
+    fathersName: '',
+    mothersName: '',
+    dpiParent: '',
+    additionalInfo: 'Pastora General',
   },
   {
-    id: '1003',
-    dpi: '1803511110409',
-    firstName: 'Melvin',
-    secondName: 'Ruben',
-    lastName: 'Miculax',
-    secondLastName: 'Coc',
+    numRegistro: '1003',
+    isMember: '1',
+    lastName: 'Miculax Coc',
     marriedName: '',
-    genere: 'M',
-    maritalStatus: 'Casado',
-    birthday: '01-Junio-1990',
+    firstName: 'Melvin Ruben',
+    fullAddress: '1 Avenida 2-73 Zona 2',
+    birthday: '01/06/1983',
+    genere: 'MASCULINO',
     age: 39,
-    mobileNumber: '33111271',
-    mobileCompany: 'Tigo',
-    email: 'melvinrmc@hotmail.com',
-    address: {
-      streetAvenue: 1,
-      streetName: 'Avenida',
-      number: '2-73',
-      zone: 2,
-      city: 'Patzicia',
-      state: 'Chimaltenango',
-      neighbourhood: 'A media cuadra del Super del Barrio',
-      additionalInfo: 'Disponible solo Fines de Semana',
-    },
+    mobileNumber: '33123271',
+    maritalStatus: 'CASADO',
+    dpi: '1803533220101',
+    isBaptized: '1',
+    fathersName: 'Ruben Miculax Ajuchan',
+    mothersName: 'Maria Alejandra Coc Xicay',
+    dpiParent: '',
+    additionalInfo: 'Casado con Gladys Melissa',
   },
 ];
 
