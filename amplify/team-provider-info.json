@@ -23,7 +23,7 @@
         },
         "memberService": {
           "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
-          "s3Key": "amplify-builds/memberService-6e4b4946415365775748-build.zip"
+          "s3Key": "amplify-builds/memberService-346d7334737076307a7a-build.zip"
         }
       }
     }
