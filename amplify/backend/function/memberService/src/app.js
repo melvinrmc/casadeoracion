@@ -59,7 +59,7 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
- app.get('/register', function(req, res) {
+ app.get(path + '/register' + hashKeyPath , function(req, res) {
   const condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
