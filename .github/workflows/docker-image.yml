@@ -2,8 +2,6 @@ name: Docker Image CI
 
 on:
   push:
-    branches:
-      - 'main'
     tags:
       - 'v*'
 
@@ -24,6 +22,6 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag melvinrmc/casadeoracion:${GITHUB_REF/refs\/tags\//}
+      run: docker build . --file Dockerfile --tag melvinrmc/casadeoracion:${{  github.ref_name }}
     - name: Docker Push
-      run: docker push melvinrmc/casadeoracion:${GITHUB_REF/refs\/tags\//}
+      run: docker push melvinrmc/casadeoracion:${{  github.ref_name }}
