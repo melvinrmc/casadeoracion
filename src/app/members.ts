@@ -1,4 +1,5 @@
 export interface Member {
+  id: string;
   numRegistro: string;
   isMember: string;
   lastName: string;
@@ -16,10 +17,14 @@ export interface Member {
   mothersName: string;
   dpiParent: string;
   additionalInfo: string;
+  accessNumber: string;
+  registerId: string;
+  registerEmail: string;
 }
 
 export const members = [
   {
+    id: '1001',
     numRegistro: '1001',
     isMember: '1',
     lastName: 'Mendoza',
@@ -37,8 +42,12 @@ export const members = [
     mothersName: '',
     dpiParent: '',
     additionalInfo: 'Pastor General',
+    accessNumber: '1111',
+    registerId: 'ba86e6c4-0b36-4534-81df-0c1e5776d6a0',
+    registerEmail: 'melvinrmc@hotmail.com',
   },
   {
+    id: '1002',
     numRegistro: '1002',
     isMember: '1',
     lastName: 'Estrada',
@@ -56,8 +65,12 @@ export const members = [
     mothersName: '',
     dpiParent: '',
     additionalInfo: 'Pastora General',
+    accessNumber: '2222',
+    registerId: 'ba86e6c4-0b36-4534-81df-0c1e5776d6a0',
+    registerEmail: 'melvinrmc@hotmail.com',
   },
   {
+    id: '1003',
     numRegistro: '1003',
     isMember: '1',
     lastName: 'Miculax Coc',
@@ -75,6 +88,9 @@ export const members = [
     mothersName: 'Maria Alejandra Coc Xicay',
     dpiParent: '',
     additionalInfo: 'Casado con Gladys Melissa',
+    accessNumber: '3333',
+    registerId: 'ba86e6c4-0b36-4534-81df-0c1e5776d6a0',
+    registerEmail: 'melvinrmc@hotmail.com',
   },
 ];
 

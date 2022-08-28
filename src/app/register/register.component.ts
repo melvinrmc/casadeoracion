@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
     let member: Member;
 
     member = {
+      id: String(this.checkoutForm.value.numRegistro),
       numRegistro: String(this.checkoutForm.value.numRegistro),
       isMember: String(this.checkoutForm.value.isMember),
       lastName: String(this.checkoutForm.value.lastName),
@@ -61,13 +62,31 @@ export class RegisterComponent implements OnInit {
       mothersName: String(this.checkoutForm.value.mothersName),
       dpiParent: String(this.checkoutForm.value.dpiParent),
       additionalInfo: String(this.checkoutForm.value.additionalInfo),
+      accessNumber: '3333',
+      registerId: 'ba86e6c4-0b36-4534-81df-0c1e5776d6a0',
+      registerEmail: 'melvinrmc@hotmail.com',
     };
 
-    this.memberService.addToRegister(member);
+    if (confirm('Esta seguro que ha finalizado de llenar los datos?')) {
+      // Save it!
+      console.warn('Miembro: ', this.checkoutForm.value);
+      console.warn('Miembro se ha enviado a la Base de Datos', member);
 
-    console.warn('Your order has been submitted', this.checkoutForm.value);
-    console.warn('Your order has been submitted', member);
-    window.alert('Your product has beed added to the cart!');
-    this.checkoutForm.reset();
+      this.memberService
+        .saveMember(member)
+        .then((things) => {
+          console.warn('Respuesta devuelta: ', things.data);
+          //this.dataSource.paginator = this.paginator;
+          //this.dataSource.sort = this.sort;
+          window.alert('Miembro ha sido agregado exitosamente!');
+          this.checkoutForm.reset();
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+    } else {
+      // Do nothing!
+      console.log('Continue llenando el formulario');
+    }
   }
 }

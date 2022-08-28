@@ -26,6 +26,7 @@
     "@aws-amplify/ui-angular": "^2.4.16",
     "angular-in-memory-web-api": "~0.14.0",
     "aws-amplify": "^4.3.28",
+    "md5": "^2.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

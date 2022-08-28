@@ -29,7 +29,12 @@ export class MemberListComponent implements OnInit {
     });
   }
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'dpi', 'email'];
+  displayedColumns: string[] = [
+    'firstName',
+    'lastName',
+    'dpi',
+    'registerEmail',
+  ];
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

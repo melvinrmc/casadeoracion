@@ -40,4 +40,15 @@ export class MemberService {
 
     return API.get(apiName, path, myInit);
   }
+
+  saveMember(member: Member) {
+    const apiName = 'memberService';
+    const path = '/members';
+    const myInit = {
+      body: member, // replace this with attributes you need
+      headers: {}, // OPTIONAL
+    };
+
+    return API.put(apiName, path, myInit);
+  }
 }
