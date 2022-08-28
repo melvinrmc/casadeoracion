@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
+    - name: Get Secrets
       run: echo ${{ secrets.AWS_EXPORTS }} | base64 -d > src/aws-exports.js
     - name: docker login
       env:
@@ -24,6 +24,6 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag melvinrmc/casadeoracion:${{  github.ref_name }}
+      run: docker build . --file Dockerfile --tag melvinrmc/casadeoracion:${GITHUB_REF/refs\/tags\//}
     - name: Docker Push
-      run: docker push melvinrmc/casadeoracion:${{  github.ref_name }}
+      run: docker push melvinrmc/casadeoracion:${GITHUB_REF/refs\/tags\//}
