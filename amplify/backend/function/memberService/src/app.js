@@ -59,33 +59,35 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
- app.get(path + '/register' + hashKeyPath , function(req, res) {
+ app.get(path + '/register/:registerid' , function(req, res) {
   const condition = {}
-  condition[partitionKeyName] = {
+  condition['registerid'] = {
     ComparisonOperator: 'EQ'
   }
 
   if (userIdPresent && req.apiGateway) {
-    condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+    condition['registerid']['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
   } else {
     try {
-      condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
+      condition['registerid']['AttributeValueList'] = [ convertUrlType(req.params['registerid'], partitionKeyType) ];
     } catch(err) {
       res.statusCode = 500;
       res.json({error: 'Wrong column type ' + err});
     }
   }
+  
+  console.log(condition);
 
   let queryParams = {
     TableName: tableName,
     IndexName: "registerId-id-index",
     KeyConditionExpression: "registerId = :registerId",
     ExpressionAttributeValues: {
-      ":registerId" : "ba86e6c4-0b36-4534-81df-0c1e5776d6a0"
+      ":registerId" : condition.registerid.AttributeValueList[0]
     },
- 
-
   };
+  
+  console.log(queryParams)
 
   dynamodb.query(queryParams, (err, data) => {
     if (err) {
