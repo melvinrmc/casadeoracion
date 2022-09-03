@@ -19,7 +19,14 @@
   <!-- Name Column -->
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef>Nombre</th>
-    <td mat-cell *matCellDef="let member">{{ member.firstName }}</td>
+    <td mat-cell *matCellDef="let member">
+      <a
+        [title]="'Ir a details: ' + member.id"
+        [routerLink]="['/members', member.id]"
+      >
+        {{ member.firstName }}
+      </a>
+    </td>
   </ng-container>
 
   <!-- Weight Column -->
