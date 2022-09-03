@@ -41,13 +41,36 @@ export class MemberDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const memberIdFromRoute = Number(routeParams.get('memberId'));
+    const memberIdFromRoute = String(routeParams.get('memberId'));
     this.memberService
       .getRemoteMemberById(memberIdFromRoute)
       .then((memberObject) => {
-        this.member = memberObject;
+        console.log(memberObject);
+        this.loadMemberData(memberObject.data);
       });
   }
 
   onSubmit(): void {}
+
+  private loadMemberData(member: Member): void {
+    this.checkoutForm = this.formBuilder.group({
+      numRegistro: member.numRegistro,
+      isMember: member.isMember,
+      lastName: member.lastName,
+      marriedName: member.marriedName,
+      firstName: member.firstName,
+      fullAddress: member.fullAddress,
+      birthday: member.birthday,
+      genere: member.genere,
+      age: member.age,
+      mobileNumber: member.mobileNumber,
+      maritalStatus: member.maritalStatus,
+      dpi: member.dpi,
+      isBaptized: member.isBaptized,
+      fathersName: member.fathersName,
+      mothersName: member.mothersName,
+      dpiParent: member.dpiParent,
+      additionalInfo: member.additionalInfo,
+    });
+  }
 }
