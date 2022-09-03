@@ -23,11 +23,11 @@ export class UserService {
       .catch((err) => console.log(err));
   }
 
-  getCurrentUserId() {
+  getCurrentUserId(): string {
     return this.currentUser.id;
   }
 
-  getCurrentUserEmail() {
+  getCurrentUserEmail(): string {
     return this.currentUser.email;
   }
 }
