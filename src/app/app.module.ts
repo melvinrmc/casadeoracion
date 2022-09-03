@@ -30,6 +30,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
+import { MemberDetailComponent } from './member-detail/member-detail.component';
 
 Amplify.configure(awsconfig);
 
@@ -70,6 +71,7 @@ Amplify.configure(awsconfig);
     MemberListComponent,
     RegisterComponent,
     HomeComponent,
+    MemberDetailComponent,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-GT' }],

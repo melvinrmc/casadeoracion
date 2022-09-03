@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UserService } from '../user.service';
 import { Auth } from 'aws-amplify';
 
 Auth.currentAuthenticatedUser({
@@ -14,7 +14,7 @@ Auth.currentAuthenticatedUser({
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 }
