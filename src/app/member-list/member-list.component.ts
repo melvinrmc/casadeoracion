@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { members } from '../members';
 import { Member } from '../members';
 import { MemberService } from '../member.service';
+import { UserService } from '../user.service';
 
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -19,14 +20,19 @@ export class MemberListComponent implements OnInit {
     lastName: string;
   }>();
 
-  constructor(private memberService: MemberService) {}
+  constructor(
+    private memberService: MemberService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.memberService.getRemoteMembers().then((things) => {
-      this.dataSource.data = things.data;
-      //this.dataSource.paginator = this.paginator;
-      //this.dataSource.sort = this.sort;
-    });
+    this.memberService
+      .getRemoteMembers(this.userService.getCurrentUserId())
+      .then((things) => {
+        this.dataSource.data = things.data;
+        //this.dataSource.paginator = this.paginator;
+        //this.dataSource.sort = this.sort;
+      });
   }
 
   displayedColumns: string[] = [

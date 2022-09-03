@@ -18,6 +18,7 @@ export class UserService {
         this.currentUser.email = user.attributes.email;
         console.log('From UserService.constructor()');
         console.log(user);
+        console.log(this.currentUser);
       })
       .catch((err) => console.log(err));
   }

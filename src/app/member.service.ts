@@ -25,9 +25,9 @@ export class MemberService {
     return this.members;
   }
 
-  getRemoteMembers() {
+  getRemoteMembers(registerId: String) {
     const apiName = 'memberService';
-    const path = '/members/register/ba86e6c4-0b36-4534-81df-0c1e5776d6a0';
+    const path = '/members/register/' + registerId;
     const myInit = {
       // OPTIONAL
       headers: {}, // OPTIONAL
