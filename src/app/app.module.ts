@@ -51,6 +51,7 @@ Amplify.configure(awsconfig);
     MatRadioModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'members/:memberId', component: MemberDetailComponent },
       { path: 'products/:productId', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
       { path: 'shipping', component: ShippingComponent },

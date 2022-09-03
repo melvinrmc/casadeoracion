@@ -41,6 +41,22 @@ export class MemberService {
     return API.get(apiName, path, myInit);
   }
 
+  getRemoteMemberById(memberId: number) {
+    const apiName = 'memberService';
+    const path = '/members/object/' + memberId;
+    const myInit = {
+      // OPTIONAL
+      headers: {}, // OPTIONAL
+      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+      queryStringParameters: {
+        // OPTIONAL
+        name: 'param',
+      },
+    };
+
+    return API.get(apiName, path, myInit);
+  }
+
   saveMember(member: Member) {
     const apiName = 'memberService';
     const path = '/members';

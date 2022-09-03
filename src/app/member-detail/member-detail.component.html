@@ -1,1 +1,212 @@
-<p>member-detail works!</p>
+<h1>Formulario de Registro</h1>
+
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>No. Registro</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Ingrese numero de Registro"
+        formControlName="numRegistro"
+      />
+      <mat-icon matSuffix>perm_identity</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </p>
+
+  <mat-radio-group aria-label="Es miembro" matInput formControlName="isMember">
+    <mat-radio-button value="1">Es miembro</mat-radio-button>
+    <mat-radio-button value="2">Es visitante</mat-radio-button>
+  </mat-radio-group>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Apellidos Completos</mat-label>
+      <input id="lastName" formControlName="lastName" matInput placeholder="" />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido de Casada</mat-label>
+      <input
+        id="marriedName"
+        formControlName="marriedName"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombres Completos</mat-label>
+      <input
+        id="firstName"
+        formControlName="firstName"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Direccion</mat-label>
+      <input
+        id="fullAddress"
+        formControlName="fullAddress"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint>Ex. 1a Av 3-73 Zona 2</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input type="date" matInput id="birthday" formControlName="birthday" />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Sexo</mat-label>
+      <mat-select id="genere" formControlName="genere">
+        <mat-option value="MASCULINO">MASCULINO</mat-option>
+        <mat-option value="FEMENINO">FEMENINO</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Edad</mat-label>
+      <input
+        type="number"
+        id="age"
+        formControlName="age"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Telefono</mat-label>
+      <input
+        type="number"
+        id="mobileNumber"
+        formControlName="mobileNumber"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Estado Civil</mat-label>
+      <mat-select id="maritalStatus" formControlName="maritalStatus">
+        <mat-option value="SOLTERO">SOLTERO</mat-option>
+        <mat-option value="CASADO">CASADO</mat-option>
+        <mat-option value="VIUDO">VIUDO</mat-option>
+        <mat-option value="DIVORCIADO">DIVORCIADO</mat-option>
+        <mat-option value="SEPARADO">SEPARADO</mat-option>
+        <mat-option value="UNIDO">UNIDO</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>No. DPI</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Ingrese numero de DPI"
+        formControlName="dpi"
+      />
+      <mat-icon matSuffix>perm_identity</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </p>
+
+  <label id="label-bautizado">Esta Bautizado</label>
+  <mat-radio-group
+    aria-label="label-bautizado"
+    labelPosition="before"
+    matInput
+    formControlName="isBaptized"
+  >
+    <mat-radio-button value="1">Si </mat-radio-button>
+    <mat-radio-button value="2"> No</mat-radio-button>
+  </mat-radio-group>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del Padre</mat-label>
+      <input
+        id="fathersName"
+        formControlName="fathersName"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre de la Madre</mat-label>
+      <input
+        id="mothersName"
+        formControlName="mothersName"
+        matInput
+        placeholder=""
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>No. DPI del Padre o Encargado</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Ingrese numero de DPI"
+        formControlName="dpiParent"
+      />
+      <mat-icon matSuffix>perm_identity</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Observaciones</mat-label>
+      <input
+        matInput
+        placeholder=""
+        id="additionalInfo"
+        formControlName="additionalInfo"
+      />
+      <mat-icon matSuffix>short_text</mat-icon>
+      <mat-hint>Ex. Pide visitar a su familia..</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <button type="submit" class="button">Registrarse</button>
+</form>
