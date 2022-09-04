@@ -1,6 +1,5 @@
 <h1>Formulario de Registro</h1>
 
-
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
   <p>
     <mat-form-field appearance="fill">
@@ -65,7 +64,7 @@
         placeholder=""
       />
       <mat-icon matSuffix>short_text</mat-icon>
-      <mat-hint>Ex. 1a Av 3-73 Zona 2</mat-hint>
+      <mat-hint></mat-hint>
     </mat-form-field>
   </p>
 
@@ -204,9 +203,9 @@
         formControlName="additionalInfo"
       />
       <mat-icon matSuffix>short_text</mat-icon>
-      <mat-hint>Ex. Pide visitar a su familia..</mat-hint>
+      <mat-hint></mat-hint>
     </mat-form-field>
   </p>
 
-  <button type="submit" class="button">Registrarse</button>
+  <button type="submit" class="button">Actualizar</button>
 </form>

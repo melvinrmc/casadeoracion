@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MemberDetailComponent implements OnInit {
   member: Member | undefined;
+  memberId: string = '';
 
   checkoutForm = this.formBuilder.group({
     numRegistro: '',
@@ -50,11 +51,59 @@ export class MemberDetailComponent implements OnInit {
       });
   }
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    // Process checkout data here
+
+    this.member = {
+      id: this.memberId,
+      numRegistro: String(this.checkoutForm.value.numRegistro),
+      isMember: String(this.checkoutForm.value.isMember),
+      lastName: String(this.checkoutForm.value.lastName),
+      marriedName: String(this.checkoutForm.value.marriedName),
+      firstName: String(this.checkoutForm.value.firstName),
+      fullAddress: String(this.checkoutForm.value.fullAddress),
+      birthday: String(this.checkoutForm.value.birthday),
+      genere: String(this.checkoutForm.value.genere),
+      age: Number(this.checkoutForm.value.age),
+      mobileNumber: String(this.checkoutForm.value.mobileNumber),
+      maritalStatus: String(this.checkoutForm.value.maritalStatus),
+      dpi: String(this.checkoutForm.value.dpi),
+      isBaptized: String(this.checkoutForm.value.isBaptized),
+      fathersName: String(this.checkoutForm.value.fathersName),
+      mothersName: String(this.checkoutForm.value.mothersName),
+      dpiParent: String(this.checkoutForm.value.dpiParent),
+      additionalInfo: String(this.checkoutForm.value.additionalInfo),
+      accessNumber: '3333',
+      registerId: 'ba86e6c4-0b36-4534-81df-0c1e5776d6a0',
+      registerEmail: 'melvinrmc@hotmail.com',
+    };
+
+    if (confirm('Esta seguro que quiere actualizar los datos?')) {
+      // Save it!
+      console.warn('Miembro: ', this.checkoutForm.value);
+      console.warn('Miembro se ha enviado a la Base de Datos', this.member);
+
+      this.memberService
+        .saveMember(this.member)
+        .then((things) => {
+          console.warn('Respuesta devuelta: ', things.data);
+          //this.dataSource.paginator = this.paginator;
+          //this.dataSource.sort = this.sort;
+          window.alert('Miembro ha sido actualizado exitosamente!');
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+    } else {
+      // Do nothing!
+      console.log('Puede seguir navegando');
+    }
+  }
 
   private loadMemberData(member: Member): void {
+    this.memberId = member.id;
     this.checkoutForm = this.formBuilder.group({
-      numRegistro: member.numRegistro,
+      numRegistro: [{ value: member.numRegistro, disabled: true }],
       isMember: member.isMember,
       lastName: member.lastName,
       marriedName: member.marriedName,
