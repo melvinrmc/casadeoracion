@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MemberService } from '../member.service';
 import { Member } from '../members';
 import { FormBuilder } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private memberService: MemberService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {}
@@ -63,8 +65,8 @@ export class RegisterComponent implements OnInit {
       dpiParent: String(this.checkoutForm.value.dpiParent),
       additionalInfo: String(this.checkoutForm.value.additionalInfo),
       accessNumber: '3333',
-      registerId: 'ba86e6c4-0b36-4534-81df-0c1e5776d6a0',
-      registerEmail: 'melvinrmc@hotmail.com',
+      registerId: this.userService.getCurrentUserId(),
+      registerEmail: this.userService.getCurrentUserEmail(),
     };
 
     if (confirm('Esta seguro que ha finalizado de llenar los datos?')) {

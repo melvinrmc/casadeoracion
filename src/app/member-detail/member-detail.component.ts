@@ -4,6 +4,7 @@ import { MemberService } from '../member.service';
 import { Member } from '../members';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -37,7 +38,8 @@ export class MemberDetailComponent implements OnInit {
   constructor(
     private memberService: MemberService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -74,8 +76,8 @@ export class MemberDetailComponent implements OnInit {
       dpiParent: String(this.checkoutForm.value.dpiParent),
       additionalInfo: String(this.checkoutForm.value.additionalInfo),
       accessNumber: '3333',
-      registerId: 'ba86e6c4-0b36-4534-81df-0c1e5776d6a0',
-      registerEmail: 'melvinrmc@hotmail.com',
+      registerId: this.userService.getCurrentUserId(),
+      registerEmail: this.userService.getCurrentUserEmail(),
     };
 
     if (confirm('Esta seguro que quiere actualizar los datos?')) {
