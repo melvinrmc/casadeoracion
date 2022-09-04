@@ -57,6 +57,52 @@ export class MemberService {
     return API.get(apiName, path, myInit);
   }
 
+  getRemoteMemberByDPI(dpi: string) {
+    const apiName = 'memberService';
+    const path = '/members/dpi/' + dpi;
+    const myInit = {
+      // OPTIONAL
+      headers: {}, // OPTIONAL
+      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+      queryStringParameters: {
+        // OPTIONAL
+        name: 'param',
+      },
+    };
+
+    return API.get(apiName, path, myInit);
+  }
+
+  getRemoteMemberByFormNumber(formNumber: string) {
+    const apiName = 'memberService';
+    const path = '/members/form/' + formNumber;
+    const myInit = {
+      // OPTIONAL
+      headers: {}, // OPTIONAL
+      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+      queryStringParameters: {
+        // OPTIONAL
+        name: 'param',
+      },
+    };
+    return API.get(apiName, path, myInit);
+  }
+
+  getRemoteMemberByAccessKey(accessKey: string) {
+    const apiName = 'memberService';
+    const path = '/members/consulta/' + accessKey;
+    const myInit = {
+      // OPTIONAL
+      headers: {}, // OPTIONAL
+      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+      queryStringParameters: {
+        // OPTIONAL
+        name: 'param',
+      },
+    };
+    return API.get(apiName, path, myInit);
+  }
+
   saveMember(member: Member) {
     const apiName = 'memberService';
     const path = '/members';
