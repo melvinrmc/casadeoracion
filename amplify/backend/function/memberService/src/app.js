@@ -100,6 +100,88 @@ const convertUrlType = (param, type) => {
 });
 
 
+ app.get(path + '/dpi/:dpi' , function(req, res) {
+  const condition = {}
+  condition['dpi'] = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition['dpi']['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+  } else {
+    try {
+      condition['dpi']['AttributeValueList'] = [ convertUrlType(req.params['dpi'], partitionKeyType) ];
+    } catch(err) {
+      res.statusCode = 500;
+      res.json({error: 'Wrong column type ' + err});
+    }
+  }
+  
+  console.log(condition);
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: "dpi-id-index",
+    KeyConditionExpression: "dpi = :dpi",
+    ExpressionAttributeValues: {
+      ":dpi" : condition.dpi.AttributeValueList[0]
+    },
+  };
+  
+  console.log(queryParams)
+
+  dynamodb.query(queryParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'DynamoDb: Could not load items: ' + err});
+    } else {
+      res.json(data.Items);
+    }
+  });
+});
+
+
+app.get(path + '/consulta/:accessNumber' , function(req, res) {
+  const condition = {}
+  condition['accessNumber'] = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition['accessNumber']['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+  } else {
+    try {
+      condition['accessNumber']['AttributeValueList'] = [ convertUrlType(req.params['accessNumber'], partitionKeyType) ];
+    } catch(err) {
+      res.statusCode = 500;
+      res.json({error: 'Wrong column type ' + err});
+    }
+  }
+  
+  console.log(condition);
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: "accessNumber-id-index",
+    KeyConditionExpression: "accessNumber = :accessNumber",
+    ExpressionAttributeValues: {
+      ":accessNumber" : condition.accessNumber.AttributeValueList[0]
+    },
+  };
+  
+  console.log(queryParams)
+
+  dynamodb.query(queryParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'DynamoDb: Could not load items: ' + err});
+    } else {
+      res.json(data.Items);
+    }
+  });
+});
+
+
 /********************************
  * HTTP Get method for list objects *
  ********************************/
