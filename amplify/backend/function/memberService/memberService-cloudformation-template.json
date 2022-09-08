@@ -23,6 +23,22 @@
     "storagememberArn": {
       "Type": "String",
       "Default": "storagememberArn"
+    },
+    "storageAtomicIncrementerName": {
+      "Type": "String",
+      "Default": "storageAtomicIncrementerName"
+    },
+    "storageAtomicIncrementerArn": {
+      "Type": "String",
+      "Default": "storageAtomicIncrementerArn"
+    },
+    "storageAtomicIncrementerStreamArn": {
+      "Type": "String",
+      "Default": "storageAtomicIncrementerStreamArn"
+    },
+    "storagememberStreamArn": {
+      "Type": "String",
+      "Default": "storagememberStreamArn"
     }
   },
   "Conditions": {
@@ -77,6 +93,24 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "STORAGE_ATOMICINCREMENTER_NAME": {
+              "Ref": "storageAtomicIncrementerName"
+            },
+            "STORAGE_ATOMICINCREMENTER_ARN": {
+              "Ref": "storageAtomicIncrementerArn"
+            },
+            "STORAGE_ATOMICINCREMENTER_STREAMARN": {
+              "Ref": "storageAtomicIncrementerStreamArn"
+            },
+            "STORAGE_MEMBER_NAME": {
+              "Ref": "storagememberName"
+            },
+            "STORAGE_MEMBER_ARN": {
+              "Ref": "storagememberArn"
+            },
+            "STORAGE_MEMBER_STREAMARN": {
+              "Ref": "storagememberStreamArn"
             }
           }
         },
@@ -190,6 +224,91 @@
                     [
                       {
                         "Ref": "storagememberArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storagememberArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storagememberArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageAtomicIncrementerArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageAtomicIncrementerArn"
                       },
                       "index/*"
                     ]

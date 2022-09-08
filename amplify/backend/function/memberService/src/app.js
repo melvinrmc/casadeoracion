@@ -1,4 +1,13 @@
-/*
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	STORAGE_ATOMICINCREMENTER_ARN
+	STORAGE_ATOMICINCREMENTER_NAME
+	STORAGE_ATOMICINCREMENTER_STREAMARN
+	STORAGE_MEMBER_ARN
+	STORAGE_MEMBER_NAME
+	STORAGE_MEMBER_STREAMARN
+Amplify Params - DO NOT EDIT *//*
 Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
     http://aws.amazon.com/apache2.0/
@@ -18,8 +27,10 @@ AWS.config.update({ region: process.env.TABLE_REGION });
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 let tableName = "co_member";
+let tableNameSequence = "AtomicIncrementer";
 if (process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
+  tableNameSequence = tableNameSequence + '-' + process.env.ENV;
 }
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
@@ -335,6 +346,37 @@ app.put(path, function(req, res) {
     }
   });
 });
+
+/************************************
+* HTTP post method for nextValue Id *
+*************************************/
+
+app.post(path + '/nextvalue', function(req, res) {
+
+  if (userIdPresent) {
+    req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+  }
+
+  let putItemParams = {
+            TableName: tableNameSequence,
+            Item: req.body,
+            Key: { Id: 1 },
+            UpdateExpression: 'SET #val = if_not_exists(#val, :zero) + :incr',
+            ExpressionAttributeNames: { '#val': 'Value' },
+            ExpressionAttributeValues: { ':incr': 1, ':zero': 0 },
+            ReturnValues: 'UPDATED_NEW',
+}
+ 
+  dynamodb.update(putItemParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url, body: req.body});
+    } else {
+      res.json({success: 'post call succeed!', url: req.url, data: data})
+    }
+  });
+});
+
 
 /************************************
 * HTTP post method for insert object *

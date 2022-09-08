@@ -1,0 +1,10 @@
+{
+  "resourceName": "AtomicIncrementer",
+  "tableName": "AtomicIncrementer",
+  "partitionKey": {
+    "fieldName": "Id",
+    "fieldType": "number"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
