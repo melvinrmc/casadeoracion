@@ -27,6 +27,17 @@
         "fieldName": "id",
         "fieldType": "string"
       }
+    },
+    {
+      "name": "numRegistro-id-index",
+      "partitionKey": {
+        "fieldName": "numRegistro",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
     }
   ],
   "triggerFunctions": []
