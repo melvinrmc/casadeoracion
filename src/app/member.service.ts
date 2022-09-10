@@ -103,6 +103,22 @@ export class MemberService {
     return API.get(apiName, path, myInit);
   }
 
+  getPublicMemberByAccessKey(id: string, accessNumber: string) {
+    const apiName = 'memberService';
+    const path = '/consulta';
+    const myInit = {
+      // OPTIONAL
+      headers: {}, // OPTIONAL
+      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+      queryStringParameters: {
+        // OPTIONAL
+        id: id,
+        accessNumber: accessNumber,
+      },
+    };
+    return API.get(apiName, path, myInit);
+  }
+
   saveMember(member: Member) {
     const apiName = 'memberService';
     const path = '/members';
