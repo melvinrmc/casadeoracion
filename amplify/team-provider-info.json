@@ -14,7 +14,8 @@
     },
     "categories": {
       "auth": {
-        "casadeoracionfcc8753d": {}
+        "casadeoracionfcc8753d": {},
+        "true": {}
       },
       "function": {
         "memberTriggerad23dafb": {

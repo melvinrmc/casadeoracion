@@ -13,6 +13,19 @@
           "delete"
         ]
       }
+    },
+    "/consulta": {
+      "name": "/consulta",
+      "lambdaFunction": "memberService",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "read"
+        ],
+        "guest": [
+          "read"
+        ]
+      }
     }
   }
 }
