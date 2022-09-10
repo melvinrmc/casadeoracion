@@ -198,7 +198,51 @@ app.get(path + '/consulta' , function(req, res) {
   });
 });
 
+app.get('/consulta' , function(req, res) {
+  const condition = {}
+  condition['id'] = {
+    ComparisonOperator: 'EQ'
+  }
+  
+    condition['accessNumber'] = {
+    ComparisonOperator: 'EQ'
+  }
 
+  if (userIdPresent && req.apiGateway) {
+    condition['accessNumber']['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+  } else {
+    try {      
+      condition['id']['AttributeValueList'] = [ convertUrlType(req.query['id'], partitionKeyType) ];
+      condition['accessNumber']['AttributeValueList'] = [ convertUrlType(req.query['accessNumber'], partitionKeyType) ];
+    } catch(err) {
+      res.statusCode = 500;
+      res.json({error: 'Wrong column type ' + err});
+    }
+  }
+  
+  console.log(condition);
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: "accessNumber-id-index",
+    KeyConditionExpression: "accessNumber = :accessNumber and id = :id",
+    ExpressionAttributeValues: {
+      ":accessNumber" : condition.accessNumber.AttributeValueList[0],
+      ":id" : condition.id.AttributeValueList[0]
+    },
+  };
+  
+  console.log(queryParams)
+
+  dynamodb.query(queryParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'DynamoDb: Could not load items: ' + err});
+    } else {
+      res.json(data.Items);
+    }
+  });
+});
 
 app.get(path + '/registro/:numRegistro' , function(req, res) {
   const condition = {}
