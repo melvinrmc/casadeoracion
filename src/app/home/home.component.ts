@@ -22,12 +22,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.memberService
-      .getPublicMemberByAccessKey('12345', '3333')
+      .getPublicMemberByAccessNumber('12345', '3333')
       .then((things) => {
         console.warn('Respuesta devuelta: ', things.data);
         //this.dataSource.paginator = this.paginator;
         //this.dataSource.sort = this.sort;
-        window.alert('Miembro ha sido agregado exitosamente!');
+        window.alert('Ver console Logs!');
       })
       .catch((error) => {
         console.log(error.response);

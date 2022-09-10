@@ -103,7 +103,7 @@ export class MemberService {
     return API.get(apiName, path, myInit);
   }
 
-  getPublicMemberByAccessKey(id: string, accessNumber: string) {
+  getPublicMemberByAccessNumber(id: string, accessNumber: string) {
     const apiName = 'memberService';
     const path = '/consulta';
     const myInit = {
