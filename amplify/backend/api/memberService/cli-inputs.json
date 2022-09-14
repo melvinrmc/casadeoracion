@@ -26,6 +26,13 @@
           "read"
         ]
       }
+    },
+    "/scan": {
+      "name": "/scan",
+      "lambdaFunction": "memberService",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }
