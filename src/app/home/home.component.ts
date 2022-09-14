@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
         console.warn('Respuesta devuelta: ', things.data);
         //this.dataSource.paginator = this.paginator;
         //this.dataSource.sort = this.sort;
-        window.alert('Ver console Logs!');
+        //window.alert('Ver console Logs!');
       })
       .catch((error) => {
         console.log(error.response);
