@@ -178,13 +178,32 @@ export class RegisterComponent implements OnInit {
       console.warn('Miembro se ha enviado a la Base de Datos', member);
 
       this.memberService
-        .saveMember(member)
-        .then((things) => {
-          console.warn('Respuesta devuelta: ', things.data);
-          //this.dataSource.paginator = this.paginator;
-          //this.dataSource.sort = this.sort;
-          window.alert('Miembro ha sido agregado exitosamente!');
-          this.checkoutForm.reset();
+        .postNextId()
+        .then((nextValue) => {
+          console.warn('Respuesta devuelta: CASA-', nextValue.data);
+          console.warn(
+            String.prototype.concat(
+              'CASA-',
+              String(Number(nextValue.data.Attributes.Value) + 1000).trim()
+            )
+          );
+          member.id = String.prototype.concat(
+            'CASA-',
+            String(Number(nextValue.data.Attributes.Value) + 1000).trim()
+          );
+
+          this.memberService
+            .saveMember(member)
+            .then((things) => {
+              console.warn('Respuesta devuelta: ', things.data);
+              //this.dataSource.paginator = this.paginator;
+              //this.dataSource.sort = this.sort;
+              window.alert('Miembro ha sido agregado exitosamente!');
+              this.checkoutForm.reset();
+            })
+            .catch((error) => {
+              console.log(error.response);
+            });
         })
         .catch((error) => {
           console.log(error.response);

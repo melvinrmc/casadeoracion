@@ -119,6 +119,17 @@ export class MemberService {
     return API.get(apiName, path, myInit);
   }
 
+  postNextId() {
+    const apiName = 'memberService';
+    const path = '/members/nextvalue';
+    const myInit = {
+      body: '', // replace this with attributes you need
+      headers: {}, // OPTIONAL
+    };
+
+    return API.post(apiName, path, myInit);
+  }
+
   saveMember(member: Member) {
     const apiName = 'memberService';
     const path = '/members';
