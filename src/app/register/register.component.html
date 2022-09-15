@@ -11,11 +11,11 @@
         formControlName="numRegistro"
         ng-model-options="{ updateOn: 'blur' }"
       />
+      <mat-error *ngIf="asyncNumRegistroValidator"
+        >No. de Registro Duplicado</mat-error
+      >
       <mat-icon matSuffix>perm_identity</mat-icon>
       <mat-hint></mat-hint>
-      <mat-error *ngIf="numRegistroDuplicadoValidator"
-        >Formulario de Registro Duplicado</mat-error
-      >
     </mat-form-field>
   </p>
 
@@ -141,7 +141,7 @@
         placeholder="Ingrese numero de DPI"
         formControlName="dpi"
       />
-      <mat-error *ngIf="dpiDuplicadoValidator">Dpi Duplicado</mat-error>
+      <mat-error *ngIf="asyncDpiValidator">Dpi Duplicado</mat-error>
       <mat-icon matSuffix>perm_identity</mat-icon>
 
       <mat-hint></mat-hint>
@@ -213,5 +213,7 @@
     </mat-form-field>
   </p>
 
-  <button type="submit" class="button">Registrarse</button>
+  <button type="submit" class="button" [disabled]="checkoutForm.invalid">
+    Registrarse
+  </button>
 </form>

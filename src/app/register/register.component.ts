@@ -23,14 +23,22 @@ export class RegisterComponent implements OnInit {
 
   checkoutForm = this.formBuilder.group({
     numRegistro: new FormControl('', {
-      validators: Validators.compose([this.numRegistroDuplicadoValidator()]),
-      //asyncValidators: [yourAsyncValidatorFunction],
+      validators: Validators.compose([Validators.required]),
+      asyncValidators: Validators.composeAsync([
+        this.asyncNumRegistroValidator(),
+      ]),
       updateOn: 'blur',
     }),
     isMember: '1',
-    lastName: '',
+    lastName: new FormControl('', {
+      validators: Validators.compose([Validators.required]),
+      updateOn: 'blur',
+    }),
     marriedName: '',
-    firstName: '',
+    firstName: new FormControl('', {
+      validators: Validators.compose([Validators.required]),
+      updateOn: 'blur',
+    }),
     fullAddress: '',
     birthday: '',
     genere: '',
@@ -81,8 +89,39 @@ export class RegisterComponent implements OnInit {
   asyncDpiValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Promise<ValidationErrors | null> => {
       return new Promise((resolve, reject) => {
-        const result = true;
-        resolve(result ? { dpiDuplicated: true } : null);
+        this.memberService
+          .getRemoteMemberByDPI(control.value)
+          .then((things) => {
+            console.warn('Respuesta devuelta: ', things.data);
+            let result = false;
+            if (things.data.length > 0) {
+              result = true;
+            }
+            resolve(result ? { dpiDuplicated: true } : null);
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
+      });
+    };
+  }
+
+  asyncNumRegistroValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Promise<ValidationErrors | null> => {
+      return new Promise((resolve, reject) => {
+        this.memberService
+          .getRemoteMemberByNumRegistro(control.value)
+          .then((things) => {
+            console.warn('Respuesta devuelta: ', things.data);
+            let result = false;
+            if (things.data.length > 0) {
+              result = true;
+            }
+            resolve(result ? { numRegistroDuplicated: true } : null);
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
       });
     };
   }
