@@ -4,6 +4,7 @@ import { Member } from '../members';
 import {
   FormBuilder,
   ValidatorFn,
+  AsyncValidatorFn,
   AbstractControl,
   ValidationErrors,
   Validators,
@@ -37,8 +38,8 @@ export class RegisterComponent implements OnInit {
     mobileNumber: '',
     maritalStatus: '',
     dpi: new FormControl('', {
-      validators: Validators.compose([this.dpiDuplicadoValidator()]),
-      //asyncValidators: [yourAsyncValidatorFunction],
+      validators: Validators.compose([Validators.required]),
+      asyncValidators: Validators.composeAsync([this.asyncDpiValidator()]),
       updateOn: 'blur',
     }),
     isBaptized: '2',
@@ -74,6 +75,15 @@ export class RegisterComponent implements OnInit {
     return (control: AbstractControl): ValidationErrors | null => {
       const forbidden = false;
       return forbidden ? { forbiddenName: { value: control.value } } : null;
+    };
+  }
+
+  asyncDpiValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Promise<ValidationErrors | null> => {
+      return new Promise((resolve, reject) => {
+        const result = true;
+        resolve(result ? { dpiDuplicated: true } : null);
+      });
     };
   }
 

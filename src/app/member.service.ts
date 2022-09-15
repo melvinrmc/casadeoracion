@@ -73,9 +73,9 @@ export class MemberService {
     return API.get(apiName, path, myInit);
   }
 
-  getRemoteMemberByFormNumber(formNumber: string) {
+  getRemoteMemberByNumRegistro(numRegistro: string) {
     const apiName = 'memberService';
-    const path = '/members/form/' + formNumber;
+    const path = '/members/registro/' + numRegistro;
     const myInit = {
       // OPTIONAL
       headers: {}, // OPTIONAL
