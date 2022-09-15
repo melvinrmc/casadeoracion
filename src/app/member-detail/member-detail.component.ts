@@ -14,6 +14,7 @@ import { UserService } from '../user.service';
 export class MemberDetailComponent implements OnInit {
   member: Member | undefined;
   memberId: string = '';
+  accessNumber: string = '';
 
   checkoutForm = this.formBuilder.group({
     id: '',
@@ -80,7 +81,7 @@ export class MemberDetailComponent implements OnInit {
       additionalInfo: String(
         this.checkoutForm.value.additionalInfo
       ).toUpperCase(),
-      accessNumber: '3333',
+      accessNumber: this.accessNumber,
       registerId: this.userService.getCurrentUserId(),
       registerEmail: this.userService.getCurrentUserEmail(),
     };
@@ -109,6 +110,7 @@ export class MemberDetailComponent implements OnInit {
 
   private loadMemberData(member: Member): void {
     this.memberId = member.id;
+    this.accessNumber = member.accessNumber;
     this.checkoutForm = this.formBuilder.group({
       id: [{ value: member.id, disabled: true }],
       numRegistro: [{ value: member.numRegistro, disabled: true }],
