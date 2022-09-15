@@ -143,6 +143,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     // Process checkout data here
     let member: Member;
+    var md5 = require('md5');
 
     member = {
       id: String(this.checkoutForm.value.numRegistro),
@@ -190,6 +191,16 @@ export class RegisterComponent implements OnInit {
           member.id = String.prototype.concat(
             'CASA-',
             String(Number(nextValue.data.Attributes.Value) + 1000).trim()
+          );
+
+          member.accessNumber = md5(
+            String.prototype.concat(
+              member.id,
+              member.numRegistro,
+              member.registerId,
+              member.firstName,
+              member.lastName
+            )
           );
 
           this.memberService
