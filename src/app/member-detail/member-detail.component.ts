@@ -58,7 +58,7 @@ export class MemberDetailComponent implements OnInit {
 
     this.member = {
       id: this.memberId,
-      numRegistro: String(this.checkoutForm.value.numRegistro),
+      numRegistro: String(this.checkoutForm.getRawValue().numRegistro),
       isMember: String(this.checkoutForm.value.isMember),
       lastName: String(this.checkoutForm.value.lastName).toUpperCase(),
       marriedName: String(this.checkoutForm.value.marriedName).toUpperCase(),
