@@ -16,6 +16,7 @@ export class MemberDetailComponent implements OnInit {
   memberId: string = '';
 
   checkoutForm = this.formBuilder.group({
+    id: '',
     numRegistro: '',
     isMember: '1',
     lastName: '',
@@ -109,6 +110,7 @@ export class MemberDetailComponent implements OnInit {
   private loadMemberData(member: Member): void {
     this.memberId = member.id;
     this.checkoutForm = this.formBuilder.group({
+      id: [{ value: member.id, disabled: true }],
       numRegistro: [{ value: member.numRegistro, disabled: true }],
       isMember: member.isMember,
       lastName: member.lastName,

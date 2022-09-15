@@ -3,6 +3,15 @@
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
   <p>
     <mat-form-field appearance="fill">
+      <mat-label>No. Membresia</mat-label>
+      <input id="id" matInput formControlName="id" />
+      <mat-icon matSuffix>perm_identity</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
       <mat-label>No. Registro</mat-label>
       <input
         type="number"
