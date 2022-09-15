@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MemberService } from '../member.service';
 import { Member } from '../members';
-import { FormBuilder } from '@angular/forms';
+import {
+  FormBuilder,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { UserService } from '../user.service';
 
 @Component({
@@ -14,7 +21,11 @@ export class RegisterComponent implements OnInit {
   startDate = new Date(1990, 0, 1);
 
   checkoutForm = this.formBuilder.group({
-    numRegistro: '',
+    numRegistro: new FormControl('', {
+      validators: Validators.compose([this.numRegistroDuplicadoValidator()]),
+      //asyncValidators: [yourAsyncValidatorFunction],
+      updateOn: 'blur',
+    }),
     isMember: '1',
     lastName: '',
     marriedName: '',
@@ -25,7 +36,11 @@ export class RegisterComponent implements OnInit {
     age: 0,
     mobileNumber: '',
     maritalStatus: '',
-    dpi: '',
+    dpi: new FormControl('', {
+      validators: Validators.compose([this.dpiDuplicadoValidator()]),
+      //asyncValidators: [yourAsyncValidatorFunction],
+      updateOn: 'blur',
+    }),
     isBaptized: '2',
     fathersName: '',
     mothersName: '',
@@ -39,7 +54,42 @@ export class RegisterComponent implements OnInit {
     private userService: UserService
   ) {}
 
-  ngOnInit(): void {}
+  forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const forbidden = nameRe.test(control.value);
+      return forbidden ? { forbiddenName: { value: control.value } } : null;
+    };
+  }
+
+  numRegistroDuplicadoValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const forbidden = true;
+      return forbidden
+        ? { forbiddenNumRegistro: { value: control.value } }
+        : null;
+    };
+  }
+
+  dpiDuplicadoValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const forbidden = false;
+      return forbidden ? { forbiddenName: { value: control.value } } : null;
+    };
+  }
+
+  ngOnInit(): void {
+    this.onChanges();
+  }
+
+  onChanges(): void {
+    this.checkoutForm.get('numRegistro')?.statusChanges.subscribe((val) => {
+      console.log(`numRegistro is ${val}.`);
+    });
+
+    this.checkoutForm.get('dpi')?.statusChanges.subscribe((val) => {
+      console.log(`dpi is ${val}.`);
+    });
+  }
 
   onSubmit(): void {
     // Process checkout data here
