@@ -128,6 +128,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.onChanges();
+    this.userService.getCurrentUser().catch((err) => {
+      console.error(err);
+      alert(
+        'Ocurrio un Error al recuperar el Id y Correo del usuario. Porfavor contacta al Administrador antes de continuar'
+      );
+    });
   }
 
   onChanges(): void {
