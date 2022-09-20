@@ -26,13 +26,15 @@ export class MemberListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.memberService
-      .getRemoteMembers(this.userService.getCurrentUserId())
-      .then((things) => {
-        this.dataSource.data = things.data;
-        //this.dataSource.paginator = this.paginator;
-        //this.dataSource.sort = this.sort;
-      });
+    this.userService.getCurrentUser().then((user) => {
+      this.memberService
+        .getRemoteMembers(this.userService.getCurrentUserId())
+        .then((things) => {
+          this.dataSource.data = things.data;
+          //this.dataSource.paginator = this.paginator;
+          //this.dataSource.sort = this.sort;
+        });
+    });
   }
 
   displayedColumns: string[] = [

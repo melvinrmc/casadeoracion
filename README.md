@@ -6,9 +6,9 @@
 # How to Docker build
 ```
 docker login
-docker build -t melvinrmc/casadeoracion:x.y.z .
-docker scan melvinrmc/casadeoracion:x.y.z
-docker push melvinrmc/casadeoracion:x.y.z
+docker build -t melvinrmc/casadeoracion:vX.Y.Z .
+docker scan melvinrmc/casadeoracion:vX.Y.Z
+docker push melvinrmc/casadeoracion:vX.Y.Z
 ```
 
 # How to versioning

@@ -3,12 +3,6 @@ import { UserService } from '../user.service';
 import { Auth } from 'aws-amplify';
 import { MemberService } from '../member.service';
 
-Auth.currentAuthenticatedUser({
-  bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-})
-  .then((user) => console.log(user))
-  .catch((err) => console.log(err));
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,6 +15,17 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    Auth.currentAuthenticatedUser({
+      bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+      .then((user) => {
+        console.log('From home.component');
+        console.log(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     this.memberService
       .getPublicMemberByAccessNumber('12345', '3333')
       .then((things) => {
