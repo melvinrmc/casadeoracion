@@ -10,7 +10,16 @@
         {{ user.signInUserSession.accessToken.payload['cognito:groups'] }}:
         {{ user.attributes.email }}!
       </h2>
+
       <h3>id: {{ user.username }}</h3>
+
+      <p>
+        <strong>
+          ..Y el pastor llama a cada una de sus ovejas por nombre, y ellas
+          reconocen su voz. (Jn 10:2 TLA)
+        </strong>
+      </p>
+
       <button (click)="signOut()">Sign Out</button>
     </ng-template>
   </amplify-authenticator>
