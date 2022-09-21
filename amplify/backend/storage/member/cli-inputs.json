@@ -38,6 +38,17 @@
         "fieldName": "id",
         "fieldType": "string"
       }
+    },
+    {
+      "name": "registerId-id-index",
+      "partitionKey": {
+        "fieldName": "registerId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
     }
   ],
   "triggerFunctions": []
