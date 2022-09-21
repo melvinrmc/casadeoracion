@@ -40,13 +40,15 @@ export class RegisterComponent implements OnInit {
       updateOn: 'blur',
     }),
     fullAddress: '',
-    birthday: '',
+    birthday: new FormControl('', {
+      validators: Validators.compose([Validators.required]),
+      updateOn: 'blur',
+    }),
     genere: '',
     age: 0,
     mobileNumber: '',
     maritalStatus: '',
     dpi: new FormControl('', {
-      validators: Validators.compose([Validators.required]),
       asyncValidators: Validators.composeAsync([this.asyncDpiValidator()]),
       updateOn: 'blur',
     }),
@@ -101,6 +103,7 @@ export class RegisterComponent implements OnInit {
           })
           .catch((error) => {
             console.log(error.response);
+            reject(error);
           });
       });
     };
