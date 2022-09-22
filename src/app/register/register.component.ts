@@ -48,10 +48,7 @@ export class RegisterComponent implements OnInit {
     age: 0,
     mobileNumber: '',
     maritalStatus: '',
-    dpi: new FormControl('', {
-      asyncValidators: Validators.composeAsync([this.asyncDpiValidator()]),
-      updateOn: 'blur',
-    }),
+    dpi: '',
     isBaptized: '2',
     fathersName: '',
     mothersName: '',
