@@ -131,6 +131,10 @@ export class MemberService {
   }
 
   saveMember(member: Member) {
+    if (member.dpi == '') {
+      delete member.dpi;
+    }
+
     const apiName = 'memberService';
     const path = '/members';
     const myInit = {

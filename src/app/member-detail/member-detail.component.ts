@@ -124,7 +124,7 @@ export class MemberDetailComponent implements OnInit {
       age: member.age,
       mobileNumber: member.mobileNumber,
       maritalStatus: member.maritalStatus,
-      dpi: member.dpi,
+      dpi: member.dpi !== undefined ? member.dpi : '',
       isBaptized: member.isBaptized,
       fathersName: member.fathersName,
       mothersName: member.mothersName,

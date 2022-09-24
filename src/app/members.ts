@@ -11,7 +11,7 @@ export interface Member {
   age: number;
   mobileNumber: string;
   maritalStatus: string;
-  dpi: string;
+  dpi?: string;
   isBaptized: string;
   fathersName: string;
   mothersName: string;
@@ -22,7 +22,7 @@ export interface Member {
   registerEmail: string;
 }
 
-export const members = [
+export const members: Member[] = [
   {
     id: '1001',
     numRegistro: '1001',

@@ -48,7 +48,10 @@ export class RegisterComponent implements OnInit {
     age: 0,
     mobileNumber: '',
     maritalStatus: '',
-    dpi: '',
+    dpi: new FormControl('', {
+      asyncValidators: Validators.composeAsync([this.asyncDpiValidator()]),
+      updateOn: 'blur',
+    }),
     isBaptized: '2',
     fathersName: '',
     mothersName: '',
@@ -187,15 +190,15 @@ export class RegisterComponent implements OnInit {
       this.memberService
         .postNextId()
         .then((nextValue) => {
-          console.warn('Respuesta devuelta: CASA-', nextValue.data);
+          console.warn('Respuesta devuelta: IDPA-', nextValue.data);
           console.warn(
             String.prototype.concat(
-              'CASA-',
+              'IDPA-',
               String(Number(nextValue.data.Attributes.Value) + 1000).trim()
             )
           );
           member.id = String.prototype.concat(
-            'CASA-',
+            'IDPA-',
             String(Number(nextValue.data.Attributes.Value) + 1000).trim()
           );
 
