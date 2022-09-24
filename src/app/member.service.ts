@@ -135,6 +135,14 @@ export class MemberService {
       delete member.dpi;
     }
 
+    if (
+      member.numRegistro === undefined ||
+      member.numRegistro == '' ||
+      member.numRegistro == 'null'
+    ) {
+      delete member.numRegistro;
+    }
+
     const apiName = 'memberService';
     const path = '/members';
     const myInit = {

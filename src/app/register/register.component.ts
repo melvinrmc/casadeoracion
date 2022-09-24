@@ -23,7 +23,6 @@ export class RegisterComponent implements OnInit {
 
   checkoutForm = this.formBuilder.group({
     numRegistro: new FormControl('', {
-      validators: Validators.compose([Validators.required]),
       asyncValidators: Validators.composeAsync([
         this.asyncNumRegistroValidator(),
       ]),
@@ -116,19 +115,25 @@ export class RegisterComponent implements OnInit {
   asyncNumRegistroValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Promise<ValidationErrors | null> => {
       return new Promise((resolve, reject) => {
-        this.memberService
-          .getRemoteMemberByNumRegistro(control.value)
-          .then((things) => {
-            console.warn('Respuesta devuelta: ', things.data);
-            let result = false;
-            if (things.data.length > 0) {
-              result = true;
-            }
-            resolve(result ? { numRegistroDuplicated: true } : null);
-          })
-          .catch((error) => {
-            console.log(error.response);
-          });
+        let result = false;
+        if (control.value == '') {
+          resolve(result ? { numRegistroDuplicated: true } : null);
+        } else {
+          this.memberService
+            .getRemoteMemberByNumRegistro(control.value)
+            .then((things) => {
+              console.warn('Respuesta devuelta: ', things.data);
+
+              if (things.data.length > 0) {
+                result = true;
+              }
+              resolve(result ? { numRegistroDuplicated: true } : null);
+            })
+            .catch((error) => {
+              console.log(error.response);
+              reject(error);
+            });
+        }
       });
     };
   }
@@ -209,7 +214,7 @@ export class RegisterComponent implements OnInit {
           member.accessNumber = md5(
             String.prototype.concat(
               member.id,
-              member.numRegistro,
+              member.numRegistro !== undefined ? member.numRegistro : '',
               member.registerId,
               member.firstName,
               member.lastName

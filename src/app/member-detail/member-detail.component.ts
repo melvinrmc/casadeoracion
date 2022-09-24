@@ -116,7 +116,12 @@ export class MemberDetailComponent implements OnInit {
     this.accessNumber = member.accessNumber;
     this.checkoutForm = this.formBuilder.group({
       id: [{ value: member.id, disabled: true }],
-      numRegistro: [{ value: member.numRegistro, disabled: true }],
+      numRegistro: [
+        {
+          value: member.numRegistro !== undefined ? member.numRegistro : '',
+          disabled: true,
+        },
+      ],
       isMember: member.isMember,
       lastName: member.lastName,
       marriedName: member.marriedName,

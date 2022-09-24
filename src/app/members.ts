@@ -1,6 +1,6 @@
 export interface Member {
   id: string;
-  numRegistro: string;
+  numRegistro?: string;
   isMember: string;
   lastName: string;
   marriedName: string;
