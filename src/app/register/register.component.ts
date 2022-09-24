@@ -64,6 +64,24 @@ export class RegisterComponent implements OnInit {
     private userService: UserService
   ) {}
 
+  getAge(birthDateString: string): number {
+    const today = new Date();
+    today.setDate(today.getDate() - 1);
+    const birthDate = new Date(birthDateString);
+
+    const yearsDifference = today.getFullYear() - birthDate.getFullYear();
+
+    if (
+      today.getMonth() < birthDate.getMonth() ||
+      (today.getMonth() === birthDate.getMonth() &&
+        today.getDate() < birthDate.getDate())
+    ) {
+      return yearsDifference - 1;
+    }
+
+    return yearsDifference;
+  }
+
   forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const forbidden = nameRe.test(control.value);
@@ -155,6 +173,15 @@ export class RegisterComponent implements OnInit {
 
     this.checkoutForm.get('dpi')?.statusChanges.subscribe((val) => {
       console.log(`dpi is ${val}.`);
+    });
+
+    this.checkoutForm.get('birthday')?.valueChanges.subscribe((val) => {
+      console.log(`birthday is ${val}.`);
+      console.log(this.getAge(val ? val.toString() : ''));
+
+      this.checkoutForm
+        .get('age')
+        ?.setValue(this.getAge(val ? val.toString() : ''));
     });
   }
 
