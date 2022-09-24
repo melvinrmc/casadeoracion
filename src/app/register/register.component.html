@@ -20,8 +20,8 @@
   </p>
 
   <mat-radio-group aria-label="Es miembro" matInput formControlName="isMember">
-    <mat-radio-button value="YES">Es miembro</mat-radio-button>
-    <mat-radio-button value="NO">Es visitante</mat-radio-button>
+    <mat-radio-button value="MIEMBRO">Es miembro</mat-radio-button>
+    <mat-radio-button value="VISITANTE">Es visitante</mat-radio-button>
   </mat-radio-group>
 
   <p>
@@ -108,11 +108,13 @@
     <mat-form-field appearance="fill">
       <mat-label>Telefono</mat-label>
       <input
-        type="number"
+        type="text"
+        mask="9999 99999 9999"
         id="mobileNumber"
         formControlName="mobileNumber"
         matInput
         placeholder=""
+        pattern="^([0-9]{0}|[0-9]{8})$"
       />
       <mat-icon matSuffix>short_text</mat-icon>
     </mat-form-field>
@@ -143,11 +145,11 @@
         formControlName="dpi"
         pattern="^([0-9]{0}|[0-9]{13})$"
       />
-      <mat-error *ngIf="!checkoutForm.errors?.['pattern']"
-        >Dpi inv&aacute;lido</mat-error
-      >
-      <mat-error *ngIf="checkoutForm.errors?.['asyncDpiValidator']"
+      <mat-error *ngIf="checkoutForm.controls['dpi'].hasError('dpiDuplicated')"
         >Dpi Duplicado</mat-error
+      >
+      <mat-error *ngIf="checkoutForm.controls['dpi'].hasError('pattern')"
+        >Dpi inv&aacute;lido</mat-error
       >
 
       <mat-icon matSuffix>perm_identity</mat-icon>
@@ -163,8 +165,8 @@
     matInput
     formControlName="isBaptized"
   >
-    <mat-radio-button value="1">Si </mat-radio-button>
-    <mat-radio-button value="2"> No</mat-radio-button>
+    <mat-radio-button value="YES">Si </mat-radio-button>
+    <mat-radio-button value="NO"> No</mat-radio-button>
   </mat-radio-group>
 
   <p>

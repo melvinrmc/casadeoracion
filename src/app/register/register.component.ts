@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
       ]),
       updateOn: 'blur',
     }),
-    isMember: '1',
+    isMember: 'MIEMBRO',
     lastName: new FormControl('', {
       validators: Validators.compose([Validators.required]),
       updateOn: 'blur',
