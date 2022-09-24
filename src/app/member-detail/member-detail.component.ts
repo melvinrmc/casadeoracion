@@ -89,7 +89,10 @@ export class MemberDetailComponent implements OnInit {
     if (confirm('Esta seguro que quiere actualizar los datos?')) {
       // Save it!
       console.warn('Miembro: ', this.checkoutForm.value);
-      console.warn('Miembro se ha enviado a la Base de Datos', this.member);
+      console.warn(
+        'Miembro se ha enviado a la Base de Datos a Actualizar',
+        this.member
+      );
 
       this.memberService
         .saveMember(this.member)

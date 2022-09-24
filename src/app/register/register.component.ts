@@ -91,20 +91,24 @@ export class RegisterComponent implements OnInit {
   asyncDpiValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Promise<ValidationErrors | null> => {
       return new Promise((resolve, reject) => {
-        this.memberService
-          .getRemoteMemberByDPI(control.value)
-          .then((things) => {
-            console.warn('Respuesta devuelta: ', things.data);
-            let result = false;
-            if (things.data.length > 0) {
-              result = true;
-            }
-            resolve(result ? { dpiDuplicated: true } : null);
-          })
-          .catch((error) => {
-            console.log(error.response);
-            reject(error);
-          });
+        let result = false;
+        if (control.value == '') {
+          resolve(result ? { dpiDuplicated: true } : null);
+        } else {
+          this.memberService
+            .getRemoteMemberByDPI(control.value)
+            .then((things) => {
+              console.warn('Respuesta devuelta: ', things.data);
+              if (things.data.length > 0) {
+                result = true;
+              }
+              resolve(result ? { dpiDuplicated: true } : null);
+            })
+            .catch((error) => {
+              console.log(error.response);
+              reject(error);
+            });
+        }
       });
     };
   }

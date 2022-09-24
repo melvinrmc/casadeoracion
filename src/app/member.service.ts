@@ -131,7 +131,7 @@ export class MemberService {
   }
 
   saveMember(member: Member) {
-    if (member.dpi == '') {
+    if (member.dpi === undefined || member.dpi == '' || member.dpi == 'null') {
       delete member.dpi;
     }
 
