@@ -2,8 +2,8 @@ name: Deploy Docker
 
 on:
   push:
-    tags:
-      - 'v0'
+    branches:
+      - 'dev-storage'
 
 jobs:
 
