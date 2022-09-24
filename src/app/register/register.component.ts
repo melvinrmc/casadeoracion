@@ -76,10 +76,10 @@ export class RegisterComponent implements OnInit {
       (today.getMonth() === birthDate.getMonth() &&
         today.getDate() < birthDate.getDate())
     ) {
-      return yearsDifference - 1;
+      return yearsDifference - 1 < 0 ? 0 : yearsDifference - 1;
     }
 
-    return yearsDifference;
+    return yearsDifference < 0 ? 0 : yearsDifference;
   }
 
   forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
