@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
       asyncValidators: Validators.composeAsync([this.asyncDpiValidator()]),
       updateOn: 'blur',
     }),
-    isBaptized: '2',
+    isBaptized: 'NO',
     fathersName: '',
     mothersName: '',
     dpiParent: '',

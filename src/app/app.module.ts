@@ -32,6 +32,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
+
 Amplify.configure(awsconfig);
 
 @NgModule({
@@ -60,6 +63,7 @@ Amplify.configure(awsconfig);
       { path: 'products', component: ProductListComponent },
     ]),
     NoopAnimationsModule,
+    NgxMaskModule.forRoot(),
   ],
   declarations: [
     AppComponent,

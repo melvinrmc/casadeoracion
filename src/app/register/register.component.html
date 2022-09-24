@@ -20,8 +20,8 @@
   </p>
 
   <mat-radio-group aria-label="Es miembro" matInput formControlName="isMember">
-    <mat-radio-button value="1">Es miembro</mat-radio-button>
-    <mat-radio-button value="2">Es visitante</mat-radio-button>
+    <mat-radio-button value="YES">Es miembro</mat-radio-button>
+    <mat-radio-button value="NO">Es visitante</mat-radio-button>
   </mat-radio-group>
 
   <p>
@@ -136,12 +136,20 @@
     <mat-form-field appearance="fill">
       <mat-label>No. DPI</mat-label>
       <input
-        type="number"
+        type="text"
+        mask="9999 99999 9999"
         matInput
         placeholder="Ingrese numero de DPI"
         formControlName="dpi"
+        pattern="^([0-9]{0}|[0-9]{13})$"
       />
-      <mat-error *ngIf="asyncDpiValidator">Dpi Duplicado</mat-error>
+      <mat-error *ngIf="!checkoutForm.errors?.['pattern']"
+        >Dpi inv&aacute;lido</mat-error
+      >
+      <mat-error *ngIf="checkoutForm.errors?.['asyncDpiValidator']"
+        >Dpi Duplicado</mat-error
+      >
+
       <mat-icon matSuffix>perm_identity</mat-icon>
 
       <mat-hint></mat-hint>
@@ -189,11 +197,17 @@
     <mat-form-field appearance="fill">
       <mat-label>No. DPI del Padre o Encargado</mat-label>
       <input
-        type="number"
+        id="dpiParent"
+        type="text"
+        mask="9999 99999 9999"
         matInput
         placeholder="Ingrese numero de DPI"
         formControlName="dpiParent"
+        pattern="^([0-9]{0}|[0-9]{13})$"
       />
+      <mat-error *ngIf="!checkoutForm.errors?.['pattern']"
+        >Dpi inv&aacute;lido</mat-error
+      >
       <mat-icon matSuffix>perm_identity</mat-icon>
       <mat-hint></mat-hint>
     </mat-form-field>
