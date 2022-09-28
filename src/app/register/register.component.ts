@@ -187,6 +187,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     // Process checkout data here
+
     let member: Member;
     var md5 = require('md5');
 
