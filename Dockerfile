@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-RUN npm run build -- --prod
+RUN ["/bin/bash", "-c", "npm run build -- --prod"]
 
 # stage 2: run
 
