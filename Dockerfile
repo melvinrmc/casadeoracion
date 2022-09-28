@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-RUN ng build --prod
+RUN npm run build -- -c production
 
 # stage 2: run
 
