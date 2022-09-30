@@ -53,5 +53,30 @@
         }
       }
     }
+  },
+  "production": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-casadeoracion-production-81728-authRole",
+      "UnauthRoleArn": "arn:aws:iam::646101853261:role/amplify-casadeoracion-production-81728-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::646101853261:role/amplify-casadeoracion-production-81728-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-casadeoracion-production-81728-deployment",
+      "UnauthRoleName": "amplify-casadeoracion-production-81728-unauthRole",
+      "StackName": "amplify-casadeoracion-production-81728",
+      "StackId": "arn:aws:cloudformation:us-east-1:646101853261:stack/amplify-casadeoracion-production-81728/9f9f6bb0-40ca-11ed-9f6a-121845a0e12b",
+      "AmplifyAppId": "d3iegqf6chw9vy",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-casadeoracion-production-81728-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "casadeoracionfcc8753d": {}
+      },
+      "function": {
+        "memberService": {
+          "deploymentBucketName": "amplify-casadeoracion-production-81728-deployment",
+          "s3Key": "amplify-builds/memberService-6e7a5531582b73744f4c-build.zip"
+        }
+      }
+    }
   }
 }
