@@ -74,7 +74,7 @@
       "function": {
         "memberService": {
           "deploymentBucketName": "amplify-casadeoracion-production-81728-deployment",
-          "s3Key": "amplify-builds/memberService-6e7a5531582b73744f4c-build.zip"
+          "s3Key": "amplify-builds/memberService-354c72712b516b2f7550-build.zip"
         }
       }
     }
