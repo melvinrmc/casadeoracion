@@ -38,6 +38,7 @@ export class MemberListComponent implements OnInit {
   }
 
   displayedColumns: string[] = [
+    'position',
     'id',
     'firstName',
     'lastName',
