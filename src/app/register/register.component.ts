@@ -231,12 +231,12 @@ export class RegisterComponent implements OnInit {
           console.warn(
             String.prototype.concat(
               'IDPA-',
-              String(Number(nextValue.data.Attributes.Value) + 1000).trim()
+              String(Number(nextValue.data.Attributes.Value) + 0).trim()
             )
           );
           member.id = String.prototype.concat(
             'IDPA-',
-            String(Number(nextValue.data.Attributes.Value) + 1000).trim()
+            String(Number(nextValue.data.Attributes.Value) + 0).trim()
           );
 
           member.accessNumber = md5(
