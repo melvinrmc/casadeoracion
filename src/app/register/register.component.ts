@@ -28,7 +28,10 @@ export class RegisterComponent implements OnInit {
       ]),
       updateOn: 'blur',
     }),
-    isMember: 'MIEMBRO',
+    isMember: FormControl('MIEMBRO', {
+      validators: Validators.compose([Validators.required]),
+      updateOn: 'blur',
+    }),
     lastName: new FormControl('', {
       validators: Validators.compose([Validators.required]),
       updateOn: 'blur',
@@ -43,15 +46,24 @@ export class RegisterComponent implements OnInit {
       validators: Validators.compose([Validators.required]),
       updateOn: 'blur',
     }),
-    genere: '',
+    genere: new FormControl('', {
+      validators: Validators.compose([Validators.required]),
+      updateOn: 'blur',
+    }),
     age: 0,
     mobileNumber: '',
-    maritalStatus: '',
+    maritalStatus: new FormControl('', {
+      validators: Validators.compose([Validators.required]),
+      updateOn: 'blur',
+    }),
     dpi: new FormControl('', {
       asyncValidators: Validators.composeAsync([this.asyncDpiValidator()]),
       updateOn: 'blur',
     }),
-    isBaptized: 'NO',
+    isBaptized: new FormControl('NO', {
+      validators: Validators.compose([Validators.required]),
+      updateOn: 'blur',
+    }),
     fathersName: '',
     mothersName: '',
     dpiParent: '',

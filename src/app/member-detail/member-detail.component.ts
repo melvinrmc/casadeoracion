@@ -119,7 +119,7 @@ export class MemberDetailComponent implements OnInit {
       numRegistro: [
         {
           value: member.numRegistro !== undefined ? member.numRegistro : '',
-          disabled: true,
+          disabled: false,
         },
       ],
       isMember: member.isMember,
