@@ -33,6 +33,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/soymiembro": {
+      "name": "/soymiembro",
+      "lambdaFunction": "memberService",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

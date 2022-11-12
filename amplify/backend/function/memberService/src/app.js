@@ -152,6 +152,51 @@ app.get(path + '/dpi/:dpi', function (req, res) {
   });
 });
 
+app.get('/soymiembro/dpi/:dpi' , function(req, res) {
+  const condition = {}
+  condition['dpi'] = {
+    ComparisonOperator: 'EQ'
+  }
+  
+    condition['birthday'] = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition['dpi']['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+  } else {
+    try {
+      condition['dpi']['AttributeValueList'] = [ convertUrlType(req.params['dpi'], partitionKeyType) ];
+      condition['birthday']['AttributeValueList'] = [ convertUrlType(req.query['birthday'], partitionKeyType) ];
+    } catch(err) {
+      res.statusCode = 500;
+      res.json({error: 'Wrong column type ' + err});
+    }
+  }
+  
+  console.log(condition);
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: "dpi-birthday-index",
+    KeyConditionExpression: "dpi = :dpi and birthday = :birthday",
+    ExpressionAttributeValues: {
+      ":dpi" : condition.dpi.AttributeValueList[0],
+      ":birthday" : condition.birthday.AttributeValueList[0]
+    },
+  };
+  
+  console.log(queryParams)
+
+  dynamodb.query(queryParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'DynamoDb: Could not load items: ' + err});
+    } else {
+      res.json(data.Items);
+    }
+  });
+});
 
 app.get(path + '/consulta', function (req, res) {
   const condition = {}
