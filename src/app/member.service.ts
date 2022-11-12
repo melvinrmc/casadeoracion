@@ -119,6 +119,21 @@ export class MemberService {
     return API.get(apiName, path, myInit);
   }
 
+  getPublicMemberByDpiBirthday(dpi: string, birthday: string) {
+    const apiName = 'memberService';
+    const path = '/soymiembro/dpi/'+dpi;
+    const myInit = {
+      // OPTIONAL
+      headers: {}, // OPTIONAL
+      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+      queryStringParameters: {
+        // OPTIONAL        
+        birthday: birthday,
+      },
+    };
+    return API.get(apiName, path, myInit);
+  }
+
   postNextId() {
     const apiName = 'memberService';
     const path = '/members/nextvalue';
