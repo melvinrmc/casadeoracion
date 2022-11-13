@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+//import  * as pdfMake from 'pdfmake/build/pdfmake';
+//import  * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
+
 import { MemberService } from '../member.service';
 import { Member } from '../members';
 import {
@@ -129,13 +134,33 @@ export class MemberComponent implements OnInit {
   }
 
   onSubmit(): void {
-    alert('Buscando...')
-    
+    alert('Buscando...');
+    var dpi = String(this.checkoutForm.value.dpi);
+    var birthday = String(this.checkoutForm.value.birthday)
     this.memberService
-      .getPublicMemberByDpiBirthday('1803533220409','1983-06-01')
+      .getPublicMemberByDpiBirthday(dpi,birthday)
       .then((memberObject) => {
         console.log(memberObject);        
       });
+  }
+
+  createPDF(){
+
+    var pdfmake = require('pdfmake');
+    var Roboto = require('../fonts/Roboto');
+    pdfmake.addFonts(Roboto);
+    
+    const pdfDefinition: any = {
+      content: [
+        {
+          text: 'Hola mundo',
+        }
+      ]
+    }
+ 
+    const pdf = pdfmake.createPdf(pdfDefinition);
+    pdf.open();
+ 
   }
 
 }
