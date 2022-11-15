@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-//import  * as pdfMake from 'pdfmake/build/pdfmake';
-//import  * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfFonts from "pdfmake/build/vfs_fonts.js"; // <-- vfs_fonts has to be imported before pdfmake
+import * as pdfMake from "pdfmake/build/pdfmake";
+
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 
 import { MemberService } from '../member.service';
@@ -144,23 +146,13 @@ export class MemberComponent implements OnInit {
       });
   }
 
-  createPDF(){
-
-    var pdfmake = require('pdfmake');
-    var Roboto = require('../fonts/Roboto');
-    pdfmake.addFonts(Roboto);
-    
-    const pdfDefinition: any = {
-      content: [
-        {
-          text: 'Hola mundo',
-        }
-      ]
-    }
+  createPDF(){  
+    let docDefinition = {  
+    header: 'C#Corner PDF Header',  
+    content: 'Sample PDF generated with Angular and PDFMake for C#Corner Blog'  
+  };  
  
-    const pdf = pdfmake.createPdf(pdfDefinition);
-    pdf.open();
- 
-  }
+  pdfMake.createPdf(docDefinition).open(); 
+}
 
 }
