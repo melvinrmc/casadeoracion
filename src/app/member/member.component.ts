@@ -174,8 +174,8 @@ export class MemberComponent implements OnInit {
   createPDF() {
 
     let docDefinition = {
-      header: 'Iglesia de Dios Pentecostes de America "Casa de Oracion"',
-      content: 'Estimado Hermano/Hermana:\n\n' + this.memberArray[0].firstname +  ' ' + this.memberArray[0].lastname +'\n\nHoy eres miembro de la Iglesia de Dios Pentecostes de America "Casa de Oracion" en Patzicia.\n\nTu numero de membresia es: ' + this.memberArray[0].id,
+      header: 'Iglesia de Dios Pentecostés de América "Casa de Oración"',
+      content: 'Estimado Hermano/Hermana:\n\n' + this.memberArray[0].firstname +  ' ' + this.memberArray[0].lastname +'\n\nEres Miembro de la Iglesia de Dios Pentecostés de América "Casa de Oración" en Patzicía.\n\nTu número de membresía es: ' + this.memberArray[0].id,
     };
 
     pdfMake.createPdf(docDefinition).open();
