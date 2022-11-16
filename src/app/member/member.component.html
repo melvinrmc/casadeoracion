@@ -1,3 +1,5 @@
+<h3>Eres Miembro</h3>
+
 
 
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
@@ -42,7 +44,16 @@
     Buscar
   </button>
 
-  <button (click)="createPDF()">Crear PDF</button>	
+  <button (click)="createPDF('hola','mundo')">Crear PDF</button>	
 
+  <span>result</span>  
+  <div *ngFor="let member of memberSubject$ | async">
+    <span>id: {{ member.id }}</span>
+    <span>primer nombre: {{ member.firstname }}</span>
+    <span>primer apellido: {{ member.lastname }}</span>
+  </div>
+  <span>end result</span>  
 </form>
+
+
 

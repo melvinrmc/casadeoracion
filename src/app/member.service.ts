@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { API } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import { Member } from './members';
@@ -14,7 +14,9 @@ import { members } from './members';
   providedIn: 'root',
 })
 export class MemberService {
-  members = members;
+  members = members;  
+  private memberList$ = new Subject<{ id: string; firstname: string; lastname: string }>();
+
   constructor(private http: HttpClient) {}
 
   addToRegister(member: Member) {

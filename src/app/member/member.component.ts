@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+
+import { MatTableDataSource } from '@angular/material/table';
 
 import * as pdfFonts from "pdfmake/build/vfs_fonts.js"; // <-- vfs_fonts has to be imported before pdfmake
 import * as pdfMake from "pdfmake/build/pdfmake";
@@ -25,8 +28,19 @@ import { UserService } from '../user.service';
   styleUrls: ['./member.component.css']
 })
 export class MemberComponent implements OnInit {
+
+  element = false;
+  name = 'prueba';
+  memberArray: { id: string; firstname: string; lastname: string }[] = [];
+  memberObservable!: Observable<{ id: string; firstname: string; lastname: string }[]>;
+  memberSubject$ = new Subject<{ id: string; firstname: string; lastname: string }[]>();
+
+  ngOnInit(): void {
+    this.memberSubject$.subscribe(memberArray => this.memberArray = memberArray);
+  }
+
   checkoutForm = this.formBuilder.group({
-    
+
     dpi: '',
     birthday: new FormControl('', {
       validators: Validators.compose([Validators.required]),
@@ -38,7 +52,7 @@ export class MemberComponent implements OnInit {
     private memberService: MemberService,
     private formBuilder: FormBuilder,
     private userService: UserService
-  ) {}
+  ) { }
 
   getAge(birthDateString: string): number {
     const today = new Date();
@@ -132,27 +146,51 @@ export class MemberComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-  }
+
 
   onSubmit(): void {
-    alert('Buscando...');
     var dpi = String(this.checkoutForm.value.dpi);
     var birthday = String(this.checkoutForm.value.birthday)
     this.memberService
-      .getPublicMemberByDpiBirthday(dpi,birthday)
+      .getPublicMemberByDpiBirthday(dpi, birthday)
       .then((memberObject) => {
-        console.log(memberObject);        
+        console.log(memberObject);
+        if (memberObject.data.length == 1) {
+
+          let aMember = { id: String(memberObject.data[0].id), firstname: String(memberObject.data[0].firstName), lastname: 'idpa apellido' };
+
+          this.memberArray = [];
+          this.memberArray.push(aMember);
+          this.memberSubject$.next(this.memberArray);
+          this.createPDF(memberObject.data[0].id, memberObject.data[0].firstName);
+
+        } else {
+          alert("No se encontraron datos");
+        }
+
       });
   }
 
-  createPDF(){  
-    let docDefinition = {  
-    header: 'C#Corner PDF Header',  
-    content: 'Sample PDF generated with Angular and PDFMake for C#Corner Blog'  
-  };  
- 
-  pdfMake.createPdf(docDefinition).open(); 
-}
+  createPDF(membresia: string, nombre: string) {
+
+
+
+
+
+    let docDefinition = {
+      header: 'Iglesia de Dios Pentecostes de America "Casa de Oracion"',
+      content: 'Eres miembro de la iglesia. Tu numero de membresia es: ' + membresia + ' Nombre: ' + nombre,
+    };
+
+    pdfMake.createPdf(docDefinition).open();
+  }
+
+  showData() {
+    return (this.element = true);
+  }
+  hideData() {
+    return (this.element = false);
+  }
+
 
 }
