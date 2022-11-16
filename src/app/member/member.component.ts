@@ -19,6 +19,7 @@ import {
   ValidationErrors,
   Validators,
   FormControl,
+  
 } from '@angular/forms';
 import { UserService } from '../user.service';
 
@@ -31,8 +32,7 @@ export class MemberComponent implements OnInit {
 
   element = false;
   name = 'prueba';
-  memberArray: { id: string; firstname: string; lastname: string }[] = [];
-  memberObservable!: Observable<{ id: string; firstname: string; lastname: string }[]>;
+  memberArray: { id: string; firstname: string; lastname: string }[] = [];  
   memberSubject$ = new Subject<{ id: string; firstname: string; lastname: string }[]>();
 
   ngOnInit(): void {
@@ -157,12 +157,12 @@ export class MemberComponent implements OnInit {
         console.log(memberObject);
         if (memberObject.data.length == 1) {
 
-          let aMember = { id: String(memberObject.data[0].id), firstname: String(memberObject.data[0].firstName), lastname: 'idpa apellido' };
+          let aMember = { id: String(memberObject.data[0].id), firstname: String(memberObject.data[0].firstName), lastname: String(memberObject.data[0].lastName) };
 
           this.memberArray = [];
           this.memberArray.push(aMember);
           this.memberSubject$.next(this.memberArray);
-          this.createPDF(memberObject.data[0].id, memberObject.data[0].firstName);
+          //this.createPDF(memberObject.data[0].id, memberObject.data[0].firstName);
 
         } else {
           alert("No se encontraron datos");
@@ -171,15 +171,11 @@ export class MemberComponent implements OnInit {
       });
   }
 
-  createPDF(membresia: string, nombre: string) {
-
-
-
-
+  createPDF() {
 
     let docDefinition = {
       header: 'Iglesia de Dios Pentecostes de America "Casa de Oracion"',
-      content: 'Eres miembro de la iglesia. Tu numero de membresia es: ' + membresia + ' Nombre: ' + nombre,
+      content: 'Estimado Hermano/Hermana:\n\n' + this.memberArray[0].firstname +  ' ' + this.memberArray[0].lastname +'\n\nHoy eres miembro de la Iglesia de Dios Pentecostes de America "Casa de Oracion" en Patzicia.\n\nTu numero de membresia es: ' + this.memberArray[0].id,
     };
 
     pdfMake.createPdf(docDefinition).open();

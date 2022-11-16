@@ -31,6 +31,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
+import { MatCardModule } from '@angular/material/card';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { MemberComponent } from './member/member.component'
@@ -53,6 +54,7 @@ Amplify.configure(awsconfig);
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatCardModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'members/:memberId', component: MemberDetailComponent },
