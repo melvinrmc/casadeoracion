@@ -7,18 +7,10 @@
   <p>
     <mat-form-field appearance="fill">
       <mat-label>No. DPI</mat-label>
-      <input
-        type="text"
-        mask="9999 99999 9999"
-        matInput
-        placeholder="Ingrese numero de DPI"
-        formControlName="dpi"
-        pattern="^([0-9]{0}|[0-9]{13})$"
-      />
+      <input type="text" mask="9999 99999 9999" matInput placeholder="Ingrese numero de DPI" formControlName="dpi"
+        pattern="^([0-9]{0}|[0-9]{13})$" />
 
-      <mat-error *ngIf="checkoutForm.controls['dpi'].hasError('pattern')"
-        >Dpi inv&aacute;lido</mat-error
-      >
+      <mat-error *ngIf="checkoutForm.controls['dpi'].hasError('pattern')">Dpi inv&aacute;lido</mat-error>
 
       <mat-icon matSuffix>perm_identity</mat-icon>
 
@@ -26,39 +18,30 @@
     </mat-form-field>
   </p>
 
-      <p>
-        <mat-form-field appearance="fill">
-          <mat-label>Fecha de Nacimiento</mat-label>
-          <input type="date" matInput id="birthday" formControlName="birthday" />
-          <mat-hint>DD/MM/YYYY</mat-hint>
-        </mat-form-field>
-      </p>  
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input type="date" matInput id="birthday" formControlName="birthday" />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+    </mat-form-field>
+  </p>
 
-  <button
-    name="submit"
-    id="submit"
-    type="submit"
-    class="button"
-    [disabled]="checkoutForm.invalid"
-  >
+  <button name="submit" id="submit" type="submit" class="button" [disabled]="checkoutForm.invalid">
     Buscar
   </button>
 
   <div *ngFor="let member of memberSubject$ | async">
-  <mat-card>    
-    <mat-card-header>
-      <mat-card-title>N&uacute;mero de Membres&iacute;a: <span>{{ member.id }}</span></mat-card-title>
-      <mat-card-subtitle>
-        <span>{{ member.firstname }}</span>&nbsp;
-        <span>{{ member.lastname }}</span>&nbsp;
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>            
-    </mat-card-content>
-    <button (click)="createPDF()">Crear PDF</button>	
-  </mat-card>
-</div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>N&uacute;mero de Membres&iacute;a: <span>{{ member.id }}</span></mat-card-title>
+        <mat-card-subtitle>
+          <span>{{ member.firstname }}</span>&nbsp;
+          <span>{{ member.lastname }}</span>&nbsp;
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+      </mat-card-content>
+      <button (click)="createPDF()">Imprimir</button>
+    </mat-card>
+  </div>
 </form>
-
-
-
