@@ -1,6 +1,11 @@
+<a [routerLink]="['/soymiembro']">
+  <h1>Soy Miembro</h1>
+</a>
+
 <a [routerLink]="['/']">
   <h1>Mi Iglesia</h1>
 </a>
+
 <ng-container *ngIf="authenticator.route === 'authenticated'">
   <a [routerLink]="['/members']">
     <h1>Membresias</h1>

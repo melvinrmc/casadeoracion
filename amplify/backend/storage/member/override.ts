@@ -9,7 +9,7 @@ export function override(resources: AmplifyDDBResourceTemplate) {
         writeCapacityUnits: 0
       };
 
-      let numIndexes=4;
+      let numIndexes=5;
       for(var i=0; i< numIndexes;i++){
       resources.dynamoDBTable.globalSecondaryIndexes[i].provisionedThroughput = {
             readCapacityUnits: 0,

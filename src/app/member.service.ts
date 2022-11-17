@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { API } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import { Member } from './members';
@@ -14,7 +14,9 @@ import { members } from './members';
   providedIn: 'root',
 })
 export class MemberService {
-  members = members;
+  members = members;  
+  private memberList$ = new Subject<{ id: string; firstname: string; lastname: string }>();
+
   constructor(private http: HttpClient) {}
 
   addToRegister(member: Member) {
@@ -114,6 +116,21 @@ export class MemberService {
         // OPTIONAL
         id: id,
         accessNumber: accessNumber,
+      },
+    };
+    return API.get(apiName, path, myInit);
+  }
+
+  getPublicMemberByDpiBirthday(dpi: string, birthday: string) {
+    const apiName = 'memberService';
+    const path = '/soymiembro/dpi/'+dpi;
+    const myInit = {
+      // OPTIONAL
+      headers: {}, // OPTIONAL
+      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+      queryStringParameters: {
+        // OPTIONAL        
+        birthday: birthday,
       },
     };
     return API.get(apiName, path, myInit);

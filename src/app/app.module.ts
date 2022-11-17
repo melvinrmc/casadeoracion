@@ -31,8 +31,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
+import { MatCardModule } from '@angular/material/card';
 
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { MemberComponent } from './member/member.component'
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 Amplify.configure(awsconfig);
@@ -52,6 +54,7 @@ Amplify.configure(awsconfig);
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatCardModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'members/:memberId', component: MemberDetailComponent },
@@ -61,6 +64,7 @@ Amplify.configure(awsconfig);
       { path: 'members', component: MemberListComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'products', component: ProductListComponent },
+      { path: 'soymiembro', component: MemberComponent },
     ]),
     NoopAnimationsModule,
     NgxMaskModule.forRoot(),
@@ -77,6 +81,7 @@ Amplify.configure(awsconfig);
     RegisterComponent,
     HomeComponent,
     MemberDetailComponent,
+    MemberComponent,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-GT' }],

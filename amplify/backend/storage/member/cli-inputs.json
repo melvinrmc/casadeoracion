@@ -49,6 +49,17 @@
         "fieldName": "id",
         "fieldType": "string"
       }
+    },
+    {
+      "name": "dpi-birthday-index",
+      "partitionKey": {
+        "fieldName": "dpi",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "birthday",
+        "fieldType": "string"
+      }
     }
   ],
   "triggerFunctions": []
