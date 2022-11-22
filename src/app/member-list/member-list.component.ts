@@ -32,6 +32,7 @@ export class MemberListComponent implements OnInit {
         console.log("es un Supervisor");
         this.memberService.scan().then((things) => {
           this.dataSource.data = things.data;
+          console.log('Total Rows scanned: '+things.data.length)
           //this.dataSource.paginator = this.paginator;
           //this.dataSource.sort = this.sort;
         });
