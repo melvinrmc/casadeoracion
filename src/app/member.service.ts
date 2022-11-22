@@ -136,6 +136,21 @@ export class MemberService {
     return API.get(apiName, path, myInit);
   }
 
+  scan() {
+    console.log('scanning...')
+    const apiName = 'memberService';
+    const path = '/scan';
+    const myInit = {
+      // OPTIONAL
+      headers: {}, // OPTIONAL
+      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+      queryStringParameters: {
+        // OPTIONAL                
+      },
+    };
+    return API.get(apiName, path, myInit);
+  }
+
   postNextId() {
     const apiName = 'memberService';
     const path = '/members/nextvalue';
