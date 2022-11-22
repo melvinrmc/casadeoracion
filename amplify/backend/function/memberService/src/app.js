@@ -354,6 +354,7 @@ app.get('/scan', function (req, res) {
 
   let queryParams = {
     TableName: tableName,
+    ProjectionExpression: "id, firstName, lastName, dpi, mobileNumber, numRegistro, registerEmail",
     //KeyConditions: condition
   }
 
