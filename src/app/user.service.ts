@@ -19,6 +19,7 @@ export class UserService {
         .then((user) => {
           this.currentUser.id = user.username;
           this.currentUser.email = user.attributes.email;
+          this.currentUser.roles = user.signInUserSession.accessToken.payload['cognito:groups'];
           console.log('From UserService.constructor()');
           console.log(user);
           console.log(this.currentUser);
@@ -39,5 +40,10 @@ export class UserService {
 
   getCurrentUserEmail(): string {
     return this.currentUser.email;
+  }
+
+  isSupervisor(): boolean{
+    console.debug(this.currentUser.roles);
+    return this.currentUser.roles.indexOf("supervisor")>-1;
   }
 }
