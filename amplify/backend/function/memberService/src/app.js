@@ -335,7 +335,7 @@ app.get(path + '/registro/:numRegistro', function (req, res) {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get('/scan', function (req, res) {
+ app.get('/scan', function (req, res) {
   const condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
@@ -358,14 +358,31 @@ app.get('/scan', function (req, res) {
     //KeyConditions: condition
   }
 
-  dynamodb.scan(queryParams, (err, data) => {
+dynamodb.scan(queryParams, (err, data) => {
     if (err) {
-      res.statusCode = 500;
-      res.json({ error: 'Could not load items: ' + err });
+        res.statusCode = 500;
+        res.json({
+            error: 'Could not load items: ' + err
+        });
     } else {
-      res.json(data.Items);
+        if (data.LastEvaluatedKey !== "undefined") {
+            queryParams.ExclusiveStartKey  = data.LastEvaluatedKey;
+            dynamodb.scan(queryParams, (err2, data2) => {
+                if (err2) {
+                    res.statusCode = 500;
+                    res.json({
+                        error: 'Could not load items2: ' + err2
+                    });
+                } else {
+                    res.json(data.Items.concat(data2.Items));
+                }
+            });
+        } else {
+            res.json(data.Items);
+        }
     }
-  });
+});
+
 });
 
 /*****************************************
