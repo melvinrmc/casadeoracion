@@ -28,9 +28,11 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 let tableName = "co_member";
 let tableNameSequence = "AtomicIncrementer";
+let tableNameMesas = "co_mesas"
 if (process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
   tableNameSequence = tableNameSequence + '-' + process.env.ENV;
+  tableNameMesas = tableNameMesas + '-' + process.env.ENV;
 }
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
@@ -353,8 +355,8 @@ app.get(path + '/registro/:numRegistro', function (req, res) {
   }
 
   let queryParams = {
-    TableName: tableName,
-    ProjectionExpression: "id, firstName, lastName, dpi, mobileNumber, numRegistro, registerEmail",
+    TableName: tableNameMesas,
+    ProjectionExpression: "id, firstName, lastName, dpi, registerEmail, mesa, birthday",
     //KeyConditions: condition
   }
 
@@ -365,6 +367,8 @@ dynamodb.scan(queryParams, (err, data) => {
             error: 'Could not load items: ' + err
         });
     } else {
+      res.json(data.Items);
+      /*
         if (data.LastEvaluatedKey !== "undefined") {
             queryParams.ExclusiveStartKey  = data.LastEvaluatedKey;
             dynamodb.scan(queryParams, (err2, data2) => {
@@ -379,7 +383,7 @@ dynamodb.scan(queryParams, (err, data) => {
             });
         } else {
             res.json(data.Items);
-        }
+        } */
     }
 });
 

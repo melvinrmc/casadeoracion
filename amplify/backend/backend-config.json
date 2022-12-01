@@ -35,6 +35,10 @@
     "AtomicIncrementer": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "mesas": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -55,6 +59,15 @@
         {
           "category": "storage",
           "resourceName": "AtomicIncrementer",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "mesas",
           "attributes": [
             "Name",
             "Arn",

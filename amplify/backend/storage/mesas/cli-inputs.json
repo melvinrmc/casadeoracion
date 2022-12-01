@@ -1,0 +1,10 @@
+{
+  "resourceName": "mesas",
+  "tableName": "co_mesas",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

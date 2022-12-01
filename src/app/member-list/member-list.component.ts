@@ -18,7 +18,7 @@ export class MemberListComponent implements OnInit {
     id: string;
     dpi: string;
     firstName: string;
-    lastName: string;
+    lastName: string;    
   }>();
 
   constructor(
@@ -56,6 +56,7 @@ export class MemberListComponent implements OnInit {
     "lastName",
     "dpi",
     "registerEmail",
+    "mesa"
   ];
 
   applyFilter(event: Event) {
