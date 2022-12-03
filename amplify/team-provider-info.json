@@ -49,7 +49,7 @@
       "function": {
         "memberService": {
           "deploymentBucketName": "amplify-casadeoracion-stage-104055-deployment",
-          "s3Key": "amplify-builds/memberService-4667616c5269624f534b-build.zip"
+          "s3Key": "amplify-builds/memberService-7553474b384e6e2f2f2b-build.zip"
         }
       }
     }

@@ -5,6 +5,18 @@
     "fieldName": "id",
     "fieldType": "string"
   },
-  "gsi": [],
+  "gsi": [
+    {
+      "name": "dpi-birthday-index",
+      "partitionKey": {
+        "fieldName": "dpi",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "birthday",
+        "fieldType": "string"
+      }
+    }
+  ],
   "triggerFunctions": []
 }
