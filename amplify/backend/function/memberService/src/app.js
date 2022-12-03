@@ -179,7 +179,7 @@ app.get('/soymiembro/dpi/:dpi' , function(req, res) {
   console.log(condition);
 
   let queryParams = {
-    TableName: tableName,
+    TableName: tableNameMesas,
     IndexName: "dpi-birthday-index",
     KeyConditionExpression: "dpi = :dpi and birthday = :birthday",
     ExpressionAttributeValues: {

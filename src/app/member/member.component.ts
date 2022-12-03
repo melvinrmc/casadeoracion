@@ -32,8 +32,8 @@ export class MemberComponent implements OnInit {
 
   element = false;
   name = 'prueba';
-  memberArray: { id: string; firstname: string; lastname: string }[] = [];  
-  memberSubject$ = new Subject<{ id: string; firstname: string; lastname: string }[]>();
+  memberArray: { id: string; firstname: string; lastname: string; mesa: string}[] = [];  
+  memberSubject$ = new Subject<{ id: string; firstname: string; lastname: string; mesa: string }[]>();
 
   ngOnInit(): void {
     this.memberSubject$.subscribe(memberArray => this.memberArray = memberArray);
@@ -157,7 +157,7 @@ export class MemberComponent implements OnInit {
         console.log(memberObject);
         if (memberObject.data.length == 1) {
 
-          let aMember = { id: String(memberObject.data[0].id), firstname: String(memberObject.data[0].firstName), lastname: String(memberObject.data[0].lastName) };
+          let aMember = { id: String(memberObject.data[0].id), firstname: String(memberObject.data[0].firstName), lastname: String(memberObject.data[0].lastName), mesa: String(memberObject.data[0].mesa) };
 
           this.memberArray = [];
           this.memberArray.push(aMember);
