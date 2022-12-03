@@ -28,9 +28,11 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 let tableName = "co_member";
 let tableNameSequence = "AtomicIncrementer";
+let tableNameMesas = "co_mesas"
 if (process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
   tableNameSequence = tableNameSequence + '-' + process.env.ENV;
+  tableNameMesas = tableNameMesas + '-' + process.env.ENV;
 }
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
@@ -177,7 +179,7 @@ app.get('/soymiembro/dpi/:dpi' , function(req, res) {
   console.log(condition);
 
   let queryParams = {
-    TableName: tableName,
+    TableName: tableNameMesas,
     IndexName: "dpi-birthday-index",
     KeyConditionExpression: "dpi = :dpi and birthday = :birthday",
     ExpressionAttributeValues: {
@@ -335,7 +337,7 @@ app.get(path + '/registro/:numRegistro', function (req, res) {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get('/scan', function (req, res) {
+ app.get('/scan', function (req, res) {
   const condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
@@ -353,19 +355,38 @@ app.get('/scan', function (req, res) {
   }
 
   let queryParams = {
-    TableName: tableName,
-    ProjectionExpression: "id, firstName, lastName, dpi, mobileNumber, numRegistro, registerEmail",
+    TableName: tableNameMesas,
+    ProjectionExpression: "id, firstName, lastName, dpi, registerEmail, mesa, birthday",
     //KeyConditions: condition
   }
 
-  dynamodb.scan(queryParams, (err, data) => {
+dynamodb.scan(queryParams, (err, data) => {
     if (err) {
-      res.statusCode = 500;
-      res.json({ error: 'Could not load items: ' + err });
+        res.statusCode = 500;
+        res.json({
+            error: 'Could not load items: ' + err
+        });
     } else {
       res.json(data.Items);
+      /*
+        if (data.LastEvaluatedKey !== "undefined") {
+            queryParams.ExclusiveStartKey  = data.LastEvaluatedKey;
+            dynamodb.scan(queryParams, (err2, data2) => {
+                if (err2) {
+                    res.statusCode = 500;
+                    res.json({
+                        error: 'Could not load items2: ' + err2
+                    });
+                } else {
+                    res.json(data.Items.concat(data2.Items));
+                }
+            });
+        } else {
+            res.json(data.Items);
+        } */
     }
-  });
+});
+
 });
 
 /*****************************************
