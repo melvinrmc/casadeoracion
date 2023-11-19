@@ -156,9 +156,9 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background-image: url('https://quesos.s3.amazonaws.com/img/background-11.jpg');
+  /*background-image: url('https://quesos.s3.amazonaws.com/img/background-tabernaculo-1.jpg');*/
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: left;
   background-attachment: fixed;
 }
