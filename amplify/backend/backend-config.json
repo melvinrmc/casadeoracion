@@ -1,96 +1,130 @@
 {
+  "api": {
+    "memberService": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "memberService"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "casadeoracionfcc8753d": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
       "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
-        },
         "mfaConfiguration": "OFF",
         "mfaTypes": [
           "SMS"
         ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]
-      }
-    }
-  },
-  "storage": {
-    "member": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "AtomicIncrementer": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "mesas": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
     }
   },
   "function": {
     "memberService": {
       "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
       "dependsOn": [
         {
-          "category": "storage",
-          "resourceName": "member",
           "attributes": [
             "Name",
             "Arn",
             "StreamArn"
-          ]
+          ],
+          "category": "storage",
+          "resourceName": "member"
         },
         {
-          "category": "storage",
-          "resourceName": "AtomicIncrementer",
           "attributes": [
             "Name",
             "Arn",
             "StreamArn"
-          ]
+          ],
+          "category": "storage",
+          "resourceName": "AtomicIncrementer"
         },
         {
-          "category": "storage",
-          "resourceName": "mesas",
           "attributes": [
             "Name",
             "Arn",
             "StreamArn"
-          ]
+          ],
+          "category": "storage",
+          "resourceName": "mesas"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_memberService_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberService"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberService_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberService"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberTriggerad23dafb_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberTriggerad23dafb"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberTriggerad23dafb_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberTriggerad23dafb"
         }
       ]
     }
   },
-  "api": {
-    "memberService": {
-      "service": "API Gateway",
+  "storage": {
+    "AtomicIncrementer": {
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "memberService",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
+      "service": "DynamoDB"
+    },
+    "member": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "mesas": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }

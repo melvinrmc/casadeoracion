@@ -1,54 +1,54 @@
 export type AmplifyDependentResourcesAttributes = {
-    "auth": {
-        "casadeoracionfcc8753d": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
-            "UserPoolId": "string",
-            "UserPoolArn": "string",
-            "UserPoolName": "string",
-            "AppClientIDWeb": "string",
-            "AppClientID": "string"
-        }
-    },
-    "storage": {
-        "member": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        },
-        "AtomicIncrementer": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        },
-        "mesas": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        }
-    },
-    "function": {
-        "memberService": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        }
-    },
-    "api": {
-        "memberService": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        }
+  "api": {
+    "memberService": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
     }
+  },
+  "auth": {
+    "casadeoracionfcc8753d": {
+      "AppClientID": "string",
+      "AppClientIDWeb": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "UserPoolArn": "string",
+      "UserPoolId": "string",
+      "UserPoolName": "string"
+    }
+  },
+  "function": {
+    "memberService": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "Name": "string",
+      "Region": "string"
+    }
+  },
+  "storage": {
+    "AtomicIncrementer": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "StreamArn": "string"
+    },
+    "member": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "StreamArn": "string"
+    },
+    "mesas": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "StreamArn": "string"
+    }
+  }
 }

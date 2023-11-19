@@ -34,7 +34,9 @@ import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MatCardModule } from '@angular/material/card';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { MemberComponent } from './member/member.component'
+import { MemberComponent } from './member/member.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { DonacionesComponent } from './donaciones/donaciones.component'
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 Amplify.configure(awsconfig);
@@ -65,6 +67,8 @@ Amplify.configure(awsconfig);
       { path: 'register', component: RegisterComponent },
       { path: 'products', component: ProductListComponent },
       { path: 'soymiembro', component: MemberComponent },
+      { path: 'promesas', component: MemberComponent },
+      { path: 'donaciones', component: MemberComponent },
     ]),
     NoopAnimationsModule,
     NgxMaskModule.forRoot(),
@@ -82,6 +86,8 @@ Amplify.configure(awsconfig);
     HomeComponent,
     MemberDetailComponent,
     MemberComponent,
+    PromesasComponent,
+    DonacionesComponent,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-GT' }],
