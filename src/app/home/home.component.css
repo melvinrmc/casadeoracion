@@ -1,3 +1,13 @@
 .home-class {
+    display: inline-block;
+   padding: 3%;
+}
+.home-logo-class {
 
+    display: inline-block;
+    
+    
+   }
+.horizontal-container-class{
+    padding: 3%;
 }

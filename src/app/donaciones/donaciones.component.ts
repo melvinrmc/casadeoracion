@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-donaciones',
@@ -7,7 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonacionesComponent implements OnInit {
 
-  constructor() { }
+  checkoutForm = this.formBuilder.group({
+    emisionDate: '',
+  
+    documentType: '1',
+    currency: '',
+    nit: '',
+    cui: '',
+    fullName: '',
+    fullAddress: '',
+    amount: '',
+  });
+
+  constructor(private formBuilder: FormBuilder) {
+
+  }
 
   ngOnInit(): void {
   }
