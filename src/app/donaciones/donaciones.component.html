@@ -1,12 +1,20 @@
-<p>donaciones works!</p>
-<p>
+<h1>Formulario de Donaciones</h1>
+
+<form [formGroup]="donationForm" (ngSubmit)="onSubmit()">
+  <p>
     <mat-form-field appearance="fill">
       <mat-label>Fecha de Emisi&oacute;n</mat-label>
-      <input type="date" matInput id="emisionDate" formControlName="emisionDate" />
-      <mat-hint>DD/MM/YYYY</mat-hint>
+      <input
+        [matDatepicker]="picker"
+        matInput
+        id="emisionDate"
+        formControlName="emisionDate"
+      />      
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      
     </mat-form-field>
   </p>
-
 
   <p>
     <mat-form-field appearance="fill">
@@ -27,8 +35,12 @@
   </p>
 
   <p>
-    <mat-radio-group aria-label="Documento" matInput formControlName="documentType">
-      <mat-radio-button [checked]="true" value="NIT" >NIT</mat-radio-button>
+    <mat-radio-group
+      aria-label="Documento"
+      matInput
+      formControlName="documentType"
+    >
+      <mat-radio-button [checked]="true" value="NIT">NIT</mat-radio-button>
       <mat-radio-button value="CUI">DPI</mat-radio-button>
     </mat-radio-group>
   </p>
@@ -36,12 +48,7 @@
   <p>
     <mat-form-field appearance="fill">
       <mat-label>NIT</mat-label>
-      <input
-        id="nit"
-        formControlName="nit"
-        matInput
-        placeholder=""
-      />
+      <input id="nit" formControlName="nit" matInput placeholder="" />
       <mat-icon matSuffix>short_text</mat-icon>
       <mat-hint></mat-hint>
     </mat-form-field>
@@ -75,3 +82,4 @@
       <mat-icon matSuffix>short_text</mat-icon>
     </mat-form-field>
   </p>
+</form>
