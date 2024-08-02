@@ -1,30 +1,34 @@
-<div class="horizontal-container-class">
-<div class="home-logo-class"></div>
-<img src="https://quesos.s3.amazonaws.com/img/rz-background-tabernaculo-1.jpg" alt="home-logo">
-<div class="home-class">
-  <amplify-authenticator [hideSignUp]="true">
-    <ng-template
-      amplifySlot="authenticated"
-      let-user="user"
-      let-signOut="signOut"
-    >
-      <h1>Bienvenido</h1>
-      <h2>
-        {{ user.signInUserSession.accessToken.payload['cognito:groups'] }}:
-        {{ user.attributes.email }}!
-      </h2>
 
-      <h3>id: {{ user.username }}</h3>
-
-      <p>
-        <strong>
-          ..Y el pastor llama a cada una de sus ovejas por nombre, y ellas
-          reconocen su voz. (Jn 10:2 TLA)
-        </strong>
-      </p>
-
-      <button (click)="signOut()">Sign Out</button>
-    </ng-template>
-  </amplify-authenticator>
-</div>
+<div class="container">
+  <div class="image-container">
+      <img src="https://quesos.s3.amazonaws.com/img/rz-background-tabernaculo-1.png" alt="Description of the image">
+  </div>
+  <div class="content-container">
+    <amplify-authenticator [hideSignUp]="true">
+      
+      <ng-template
+        style="color: var(--amplify-colors-neutral-80)"
+        amplifySlot="authenticated"
+        let-user="user"
+        let-signOut="signOut"
+      >
+        <h1>Bienvenido</h1>
+        <h2>
+          {{ user.signInUserSession.accessToken.payload['cognito:groups'] }}:
+          {{ user.attributes.email }}!
+        </h2>
+  
+        <!-- <h3>id: {{ user.username }}</h3> -->
+  
+        <p>
+          <strong>
+            ...y el pastor llama a cada una de sus ovejas por nombre, y ellas
+            reconocen su voz. (Jn 10:2 TLA)
+          </strong>
+        </p>
+  
+        <button (click)="signOut()">Sign Out</button>
+      </ng-template>
+    </amplify-authenticator>
+  </div>
 </div>

@@ -50,8 +50,7 @@ export class DonacionesComponent implements OnInit {
 
   donationForm = this.formBuilder.group({
     
-    emisionDate: new Date(),
-  
+    emisionDate: new Date(),  
     documentType: 'DONACION',
     currency: 'GTQ',
     nit: '',
