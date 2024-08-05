@@ -77,6 +77,20 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "memberStreamProc": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "member"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -93,6 +107,22 @@
         {
           "category": "function",
           "resourceName": "memberService"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberStreamProc_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberStreamProc"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberStreamProc_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberStreamProc"
         }
       ]
     },

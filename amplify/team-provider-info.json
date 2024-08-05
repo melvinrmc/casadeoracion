@@ -25,7 +25,19 @@
         "memberService": {
           "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
           "s3Key": "amplify-builds/memberService-685037624233755a5253-build.zip"
+        },
+        "memberStreamProc": {
+          "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
+          "s3Key": "amplify-builds/memberStreamProc-30316c6b4b4a56374477-build.zip"
         }
+      },
+      "api": {
+        "memberService": {}
+      },
+      "storage": {
+        "AtomicIncrementer": {},
+        "member": {},
+        "mesas": {}
       }
     }
   },

@@ -29,6 +29,6 @@
     --amplify-components-tabs-item-active-border-color: var(--amplify-colors-neutral-100);
     --amplify-components-tabs-item-color: var(--amplify-colors-neutral-80);
     --amplify-components-tabs-item-active-color: var(--amplify-colors-purple-100);
-    --amplify-components-button-link-color: var(--amplify-colors-purple-80);
+    --amplify-components-button-link-color: var(--amplify-colors-neutral-60);
 
 }
