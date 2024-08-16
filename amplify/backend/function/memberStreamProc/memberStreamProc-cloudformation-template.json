@@ -19,6 +19,10 @@
     "storagememberStreamArn": {
       "Type": "String",
       "Default": "storagememberStreamArn"
+    },
+    "functioncasadeoracionCasaLambdaLayerNode18Arn": {
+      "Type": "String",
+      "Default": "functioncasadeoracionCasaLambdaLayerNode18Arn"
     }
   },
   "Conditions": {
@@ -83,7 +87,11 @@
           ]
         },
         "Runtime": "nodejs18.x",
-        "Layers": [],
+        "Layers": [
+          {
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:casadeoracionCasaLambdaLayerNode18-dev:1"
+          }
+        ],
         "Timeout": 25
       }
     },
@@ -220,6 +228,32 @@
         },
         "StartingPosition": "LATEST"
       }
+    },
+    "CustomLambdaExecutionPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "custom-lambda-execution-policy",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Action": [
+                "sqs:SendMessage"
+              ],
+              "Resource": [
+                "arn:aws:sqs:us-east-1:646101853261:members_queue_dev"
+              ],
+              "Effect": "Allow"
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ]
+      },
+      "DependsOn": "LambdaExecutionRole"
     }
   },
   "Outputs": {

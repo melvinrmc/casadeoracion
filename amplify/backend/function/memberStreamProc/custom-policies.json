@@ -1,6 +1,6 @@
 [
   {
-    "Action": [],
-    "Resource": []
+    "Action": ["sqs:SendMessage"],
+    "Resource": ["arn:aws:sqs:us-east-1:646101853261:members_queue_dev"]
   }
 ]

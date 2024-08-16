@@ -44,6 +44,11 @@
     }
   },
   "function": {
+    "casadeoracionCasaLambdaLayerNode18": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    },
     "memberService": {
       "build": true,
       "dependsOn": [
@@ -83,10 +88,10 @@
       "dependsOn": [
         {
           "attributes": [
-            "StreamArn"
+            "Arn"
           ],
-          "category": "storage",
-          "resourceName": "member"
+          "category": "function",
+          "resourceName": "casadeoracionCasaLambdaLayerNode18"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -94,6 +99,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_casadeoracionCasaLambdaLayerNode18_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "casadeoracionCasaLambdaLayerNode18"
+        }
+      ]
+    },
+    "AMPLIFY_function_casadeoracionCasaLambdaLayerNode18_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "casadeoracionCasaLambdaLayerNode18"
+        }
+      ]
+    },
     "AMPLIFY_function_memberService_deploymentBucketName": {
       "usedBy": [
         {
