@@ -1,0 +1,17 @@
+{
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "casadeoracionCasaLambdaLayerNode18",
+      "env": "dev",
+      "version": 1,
+      "isLatestVersionSelected": false
+    }
+  ],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "memberQueue",
+      "environmentVariableName": "MEMBER_QUEUE"
+    }
+  ]
+}

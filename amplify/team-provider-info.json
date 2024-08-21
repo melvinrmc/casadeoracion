@@ -33,6 +33,11 @@
         "casadeoracionCasaLambdaLayerNode18": {
           "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
           "s3Key": "amplify-builds/casadeoracionCasaLambdaLayerNode18-LambdaLayerVersion05f25ab3-build.zip"
+        },
+        "memberReplicationProc": {
+          "memberQueue": "arn:aws:sqs:us-east-1:646101853261:members_queue_dev",
+          "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
+          "s3Key": "amplify-builds/memberReplicationProc-4449366d384331575335-build.zip"
         }
       },
       "api": {

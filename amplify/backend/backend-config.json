@@ -49,6 +49,20 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer"
     },
+    "memberReplicationProc": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "casadeoracionCasaLambdaLayerNode18"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "memberService": {
       "build": true,
       "dependsOn": [
@@ -112,6 +126,30 @@
         {
           "category": "function",
           "resourceName": "casadeoracionCasaLambdaLayerNode18"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberReplicationProc_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberReplicationProc"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberReplicationProc_memberQueue": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberReplicationProc"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberReplicationProc_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberReplicationProc"
         }
       ]
     },

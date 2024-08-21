@@ -21,6 +21,13 @@ export type AmplifyDependentResourcesAttributes = {
     "casadeoracionCasaLambdaLayerNode18": {
       "Arn": "string"
     },
+    "memberReplicationProc": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "memberService": {
       "Arn": "string",
       "LambdaExecutionRole": "string",

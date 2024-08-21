@@ -1,0 +1,6 @@
+[
+  {
+    "Action": ["sqs:ReceiveMessage","sqs:DeleteMessage","sqs:GetQueueAttributes"],
+    "Resource": ["arn:aws:sqs:us-east-1:646101853261:members_queue_dev"]
+  }
+]
