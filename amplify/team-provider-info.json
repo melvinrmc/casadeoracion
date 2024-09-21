@@ -32,12 +32,15 @@
         },
         "casadeoracionCasaLambdaLayerNode18": {
           "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
-          "s3Key": "amplify-builds/casadeoracionCasaLambdaLayerNode18-LambdaLayerVersion05f25ab3-build.zip"
+          "s3Key": "amplify-builds/casadeoracionCasaLambdaLayerNode18-LambdaLayerVersionaf082c7f-build.zip"
         },
         "memberReplicationProc": {
-          "memberQueue": "arn:aws:sqs:us-east-1:646101853261:members_queue_dev",
           "deploymentBucketName": "amplify-casadeoracion-dev-21013-deployment",
-          "s3Key": "amplify-builds/memberReplicationProc-4449366d384331575335-build.zip"
+          "s3Key": "amplify-builds/memberReplicationProc-5539304f6b6f4f476842-build.zip",
+          "memberQueue": "arn:aws:sqs:us-east-1:646101853261:members_queue_dev",
+          "proxyHostName": "casadeoraciondb.cqiwwliumi9b.us-east-1.rds.amazonaws.com",
+          "port": "3306",
+          "dbUserName": "elusv"
         }
       },
       "api": {

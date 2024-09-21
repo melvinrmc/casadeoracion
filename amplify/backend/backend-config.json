@@ -129,6 +129,14 @@
         }
       ]
     },
+    "AMPLIFY_function_memberReplicationProc_dbUserName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberReplicationProc"
+        }
+      ]
+    },
     "AMPLIFY_function_memberReplicationProc_deploymentBucketName": {
       "usedBy": [
         {
@@ -138,6 +146,22 @@
       ]
     },
     "AMPLIFY_function_memberReplicationProc_memberQueue": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberReplicationProc"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberReplicationProc_port": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "memberReplicationProc"
+        }
+      ]
+    },
+    "AMPLIFY_function_memberReplicationProc_proxyHostName": {
       "usedBy": [
         {
           "category": "function",

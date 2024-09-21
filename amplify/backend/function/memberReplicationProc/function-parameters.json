@@ -4,7 +4,7 @@
       "type": "ProjectLayer",
       "resourceName": "casadeoracionCasaLambdaLayerNode18",
       "env": "dev",
-      "version": 1,
+      "version": 3,
       "isLatestVersionSelected": false
     }
   ],
@@ -12,6 +12,18 @@
     {
       "cloudFormationParameterName": "memberQueue",
       "environmentVariableName": "MEMBER_QUEUE"
+    },
+    {
+      "cloudFormationParameterName": "proxyHostName",
+      "environmentVariableName": "ProxyHostName"
+    },
+    {
+      "cloudFormationParameterName": "port",
+      "environmentVariableName": "Port"
+    },
+    {
+      "cloudFormationParameterName": "dbUserName",
+      "environmentVariableName": "DBUserName"
     }
   ]
 }

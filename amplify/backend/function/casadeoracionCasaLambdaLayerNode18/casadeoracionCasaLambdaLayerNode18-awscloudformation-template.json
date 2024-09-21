@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.12.5\",\"stackType\":\"function-LambdaLayer\",\"metadata\":{}}",
+  "Description": "Lambda layer resource stack creation using Amplify CLI",
   "Parameters": {
     "env": {
       "Type": "String"
@@ -20,7 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersion05f25ab3": {
+    "LambdaLayerVersionaf082c7f": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": {
@@ -51,13 +51,50 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivate05f25ab3": {
+    "LambdaLayerPermissionPrivateaf082c7f": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
         "LayerVersionArn": {
-          "Ref": "LambdaLayerVersion05f25ab3"
+          "Ref": "LambdaLayerVersionaf082c7f"
         },
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerVersion05f25ab3": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "CompatibleRuntimes": [
+          "nodejs18.x"
+        ],
+        "Content": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": "amplify-builds/casadeoracionCasaLambdaLayerNode18-LambdaLayerVersion05f25ab3-build.zip"
+        },
+        "Description": "Updated layer version 2024-08-16T13:56:42.530Z",
+        "LayerName": {
+          "Fn::Sub": [
+            "casadeoracionCasaLambdaLayerNode18-${env}",
+            {
+              "env": {
+                "Ref": "env"
+              }
+            }
+          ]
+        }
+      },
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Retain"
+    },
+    "LambdaLayerPermissionPrivate05f25ab3": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": "arn:aws:lambda:us-east-1:646101853261:layer:casadeoracionCasaLambdaLayerNode18-dev:1",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
@@ -67,7 +104,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersion05f25ab3"
+        "Ref": "LambdaLayerVersionaf082c7f"
       }
     }
   }

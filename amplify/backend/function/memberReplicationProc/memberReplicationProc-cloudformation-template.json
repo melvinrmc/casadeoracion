@@ -16,12 +16,21 @@
     "s3Key": {
       "Type": "String"
     },
-    "memberQueue": {
-      "Type": "String"
-    },
     "functioncasadeoracionCasaLambdaLayerNode18Arn": {
       "Type": "String",
       "Default": "functioncasadeoracionCasaLambdaLayerNode18Arn"
+    },
+    "memberQueue": {
+      "Type": "String"
+    },
+    "proxyHostName": {
+      "Type": "String"
+    },
+    "port": {
+      "Type": "String"
+    },
+    "dbUserName": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -79,6 +88,15 @@
             },
             "MEMBER_QUEUE": {
               "Ref": "memberQueue"
+            },
+            "ProxyHostName": {
+              "Ref": "proxyHostName"
+            },
+            "Port": {
+              "Ref": "port"
+            },
+            "DBUserName": {
+              "Ref": "dbUserName"
             }
           }
         },
@@ -91,7 +109,7 @@
         "Runtime": "nodejs18.x",
         "Layers": [
           {
-            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:casadeoracionCasaLambdaLayerNode18-dev:1"
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:casadeoracionCasaLambdaLayerNode18-dev:3"
           }
         ],
         "Timeout": 25

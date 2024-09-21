@@ -3,6 +3,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.1676.0"
+    "aws-sdk": "^2.1676.0",
+    "mysql2": "^3.11.0"
   }
 }
